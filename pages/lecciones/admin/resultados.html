@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Resultados de exámenes - Study-Connect</title>
+
+<link rel="stylesheet" href="../../../css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>📝 Resultados de exámenes</h1>
+
+<p>Panel de Administración</p>
+
+</header>
+
+<main>
+
+<h2>📊 Resumen de exámenes</h2>
+
+<table border="1" width="100%">
+
+<tr>
+
+<th>Estudiantes registrados</th>
+
+<th>Exámenes aprobados</th>
+
+<th>Exámenes pendientes</th>
+
+</tr>
+
+<tr>
+
+<td id="totalEstudiantes">0</td>
+
+<td id="totalAprobados">0</td>
+
+<td id="totalPendientes">0</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<h2>📋 Resultados de los estudiantes</h2>
+
+<table border="1" width="100%">
+
+<thead>
+
+<tr>
+
+<th>Estudiante</th>
+
+<th>Curso</th>
+
+<th>Progreso</th>
+
+<th>Examen</th>
+
+<th>Certificado</th>
+
+</tr>
+
+</thead>
+
+<tbody id="listaResultados">
+
+</tbody>
+
+</table>
+
+<br>
+
+
+<a href="../admin.html" class="boton">
+⬅ Volver al panel de Administración
+</a>
+
+</main>
+<script>
+
+let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+if (!usuarioActivo || usuarioActivo.rol !== "admin") {
+    window.location.href = "../../../index.html";
+}
+
+</script>
+
+
+<script src="resultados.js"></script>
+
+</body>
+
+</html>

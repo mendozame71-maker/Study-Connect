@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Mi Perfil - Study-Connect</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/perfil.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>👤 Mi Perfil</h1>
+<p>Study-Connect</p>
+
+</header>
+
+
+<main class="contenedor">
+
+<div class="tarjeta">
+
+<h2 id="nombreUsuario"></h2>
+
+<div class="perfil">
+    <div class="fotoPerfil">
+
+<img
+id="fotoPerfil"
+
+src="../images/logo-study-connect.png"
+alt="Foto de perfil"
+class="foto">
+
+<input
+type="file"
+id="subirFoto"
+accept="image/*">
+
+</div>
+
+<label>👤 Nombre</label>
+<input type="text" id="txtNombre">
+
+<label>📧 Correo</label>
+<input type="email" id="txtCorreo">
+
+<label>📱 Teléfono</label>
+<input type="text" id="txtTelefono">
+
+<label>📍 Ciudad</label>
+<input type="text" id="txtCiudad">
+
+<button class="boton" id="btnGuardar">
+💾 Guardar cambios
+</button>
+
+</div>
+
+<p>🎓 Cursos inscritos:</p>
+
+<ul class="cursosPerfil" id="listaCursos">
+</ul>
+
+<a href="dashboard.html" class="boton">
+⬅ Volver al panel
+</a>
+
+</div>
+
+</main>
+
+
+<script>
+
+const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+const listaCursos = document.getElementById("listaCursos");
+if (!usuario) {
+    window.location.href = "login.html";
+}
+
+const estudiantes =
+    JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+const misCursos = estudiantes.filter(
+    estudiante => estudiante.nombre.toLowerCase() === usuario.nombre.toLowerCase()
+);
+
+if (misCursos.length > 0) {
+
+   misCursos.forEach(estudiante => {
+
+    const li = document.createElement("li");
+
+    li.innerHTML =
+        "📘 " +
+        estudiante.curso +
+        " — " +
+        estudiante.progreso +
+        " — " +
+        estudiante.examen +
+        ' <a href="certificado.html?certificado=' +
+        estudiante.certificado +
+        '" class="boton">🏆 Ver certificado</a>';
+
+    listaCursos.appendChild(li);
+
+});
+
+} else {
+
+    listaCursos.innerHTML =
+        "<li>No tienes cursos inscritos todavía.</li>";
+
+}
+ 
+
+    document.getElementById("txtNombre").value =
+        usuario.nombre || "";
+
+    document.getElementById("txtCorreo").value =
+        usuario.correo || "";
+
+    document.getElementById("txtTelefono").value =
+        usuario.telefono || "";
+
+    document.getElementById("txtCiudad").value =
+        usuario.ciudad || "";
+
+        if (usuario.foto) {
+
+    document.getElementById("fotoPerfil").src =
+    usuario.foto;
+
+}
+
+document.getElementById("btnGuardar").onclick = function () {
+
+    usuario.nombre = document.getElementById("txtNombre").value;
+
+    usuario.correo = document.getElementById("txtCorreo").value;
+
+    usuario.telefono = document.getElementById("txtTelefono").value;
+
+    usuario.ciudad = document.getElementById("txtCiudad").value;
+
+    localStorage.setItem(
+        "usuarioActivo",
+        JSON.stringify(usuario)
+    );
+
+    alert("✅ Perfil actualizado correctamente.");
+
+};
+
+const subirFoto = document.getElementById("subirFoto");
+
+subirFoto.addEventListener("change", function () {
+
+    const archivo = this.files[0];
+
+    if (!archivo) return;
+
+    const lector = new FileReader();
+
+    lector.onload = function (e) {
+
+        document.getElementById("fotoPerfil").src = e.target.result;
+
+        usuario.foto = e.target.result;
+
+        localStorage.setItem(
+            "usuarioActivo",
+            JSON.stringify(usuario)
+        );
+
+    };
+
+    lector.readAsDataURL(archivo);
+
+});
+</script>
+
+
+</body>
+
+</html>

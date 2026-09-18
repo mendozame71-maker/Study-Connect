@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Estudiantes - Study-Connect</title>
+<link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+<header>
+<h1>👥 Estudiantes registrados</h1>
+<p>Panel de Administración</p>
+</header>
+
+
+<main class="contenedor">
+
+    <input
+type="text"
+id="buscarEstudiante"
+placeholder="🔍 Buscar estudiante..."
+onkeyup="buscarEstudiante()">
+
+<br><br>
+
+<h2>Lista de estudiantes</h2>
+
+<input 
+type="text" 
+id="nuevoNombre" 
+placeholder="Nombre del estudiante">
+
+<select id="nuevoCursoEstudiante">
+    <option value="">Selecciona un curso</option>
+
+</select>
+
+<button class="boton" onclick="agregarEstudiante()">
+➕ Agregar estudiante
+</button>
+
+<br><br>
+
+<table border="1" width="100%">
+
+<tr>
+    <th>Nombre</th>
+    <th>Curso</th>
+    <th>Progreso</th>
+    <th>Examen</th>
+    <th>Certificado</th>
+    <th>Acciones</th>
+</tr>
+<tbody id="listaEstudiantes">
+
+</tbody>
+
+<script>
+
+function mostrarEstudiantes(lista){
+
+    let tabla = document.getElementById("listaEstudiantes");
+
+    tabla.innerHTML = "";
+
+   lista.forEach((estudiante, indice) => {
+
+        tabla.innerHTML += `
+        <tr>
+            <td>${estudiante.nombre}</td>
+            <td>${estudiante.curso}</td>
+            <td>${estudiante.progreso}</td>
+            <td>${estudiante.examen}</td>
+            <td>${estudiante.certificado}</td>
+            <td>
+
+               <button class="boton" onclick="verCertificado('${estudiante.certificado}')">
+🎓 Ver certificado
+</button>
+
+<button class="boton" onclick="editarEstudiante(${indice})">
+✏️ Editar
+</button>
+
+<button class="boton" onclick="eliminarEstudiante(${indice})">
+🗑 Eliminar
+</button>
+
+            </td>
+        </tr>
+        `;
+
+    });
+
+}
+function verCertificado(numero) {
+
+    if (numero === "Sin certificado") {
+
+        alert("Este estudiante aún no tiene certificado.");
+        return;
+
+    }
+
+   window.location.href =
+        "../../certificado.html?certificado=" + encodeURIComponent(numero);
+
+}
+
+function cargarCursos(){
+
+   let selector = document.getElementById("nuevoCursoEstudiante");
+
+console.log(selector);
+
+    selector.innerHTML =
+        '<option value="">Selecciona un curso</option>';
+
+    // Cursos principales
+    let psicologia =
+        localStorage.getItem("nombrePsicologia") || "Psicología";
+        console.log(psicologia);
+
+    let educacion =
+        localStorage.getItem("nombreEducacion") || "Educación";
+
+    let estudio =
+        localStorage.getItem("nombreEstudio") || "Técnicas de estudio";
+
+    selector.innerHTML += `<option>${psicologia}</option>`;
+    selector.innerHTML += `<option>${educacion}</option>`;
+    selector.innerHTML += `<option>${estudio}</option>`;
+
+    // Cursos agregados
+    let cursos =
+        JSON.parse(localStorage.getItem("cursos")) || [];
+        console.log(cursos);
+
+    cursos.forEach(function(curso){
+
+        selector.innerHTML += `<option>${curso.nombre}</option>`;
+
+    });
+
+    console.log(selector.innerHTML);
+alert(selector.innerHTML);
+
+
+}
+
+let estudiantes = (JSON.parse(localStorage.getItem("estudiantes")) || []).
+filter(estudiante => estudiante.nombre !== "Administrador");
+
+// ===============================
+// SINCRONIZAR CADA CURSO CON ADMIN
+// ===============================
+
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+if (!usuarioActivo || usuarioActivo.rol !== "admin") {
+    window.location.href = "../../../index.html";
+}
+
+if (false && usuarioActivo) {
+
+    const cursosProgreso = usuarioActivo.progreso;
+
+    for (let cursoNombre in cursosProgreso) {
+
+        const curso = cursosProgreso[cursoNombre];
+
+        let completadas = 0;
+        let total = 0;
+
+        for (let clave in curso) {
+
+            if (clave.startsWith("leccion")) {
+
+                total++;
+
+                if (curso[clave] === true) {
+                    completadas++;
+                }
+
+            }
+
+        }
+
+        let porcentaje = 0;
+
+        if (total > 0) {
+            porcentaje = Math.round((completadas / total) * 100);
+        }
+
+      let nombreCursoAdmin = cursoNombre;
+
+if (cursoNombre.toLowerCase() === "psicologia") {
+    nombreCursoAdmin = "Psicología";
+}
+
+if (cursoNombre.toLowerCase() === "educacion") {
+    nombreCursoAdmin = "Educación";
+}
+
+if (cursoNombre.toLowerCase() === "tecnicas") {
+    nombreCursoAdmin = "Técnicas de estudio";
+}
+
+let estudianteAdmin = estudiantes.find(function(e) {
+    return e.nombre.toLowerCase() === usuarioActivo.nombre.toLowerCase()
+        && e.curso.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") ===
+           nombreCursoAdmin.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+});
+        if (estudianteAdmin) {
+
+            // Solo actualizamos el progreso.
+            // El certificado y el examen permanecen intactos.
+
+            estudianteAdmin.progreso = porcentaje + "%";
+
+        } else {
+
+            // Crear una nueva fila para este curso.
+
+            estudiantes.push({
+
+              nombre: "Tony",
+                curso: cursoNombre,
+                progreso: porcentaje + "%",
+                examen: "Pendiente",
+                certificado: "Sin certificado"
+
+            });
+
+        }
+
+    }
+
+    localStorage.setItem(
+        "estudiantes",
+        JSON.stringify(estudiantes)
+    );
+
+}
+
+mostrarEstudiantes(estudiantes);
+
+cargarCursos();
+
+function buscarEstudiante(){
+
+    let texto = document.getElementById("buscarEstudiante").value.toLowerCase();
+
+    let estudiantes = JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+    let filtrados = estudiantes.filter(function(estudiante){
+
+        return estudiante.nombre.toLowerCase().includes(texto);
+
+    });
+
+    mostrarEstudiantes(filtrados);
+
+}
+
+function agregarEstudiante(){
+
+    let nombre = document.getElementById("nuevoNombre").value.trim();
+
+    let curso = document.getElementById("nuevoCursoEstudiante").value.trim();
+
+
+    if(nombre === "" || curso === ""){
+
+        alert("Completa todos los datos");
+        return;
+
+    }
+
+
+    let estudiantes = JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+
+    estudiantes.push({
+
+        nombre: nombre,
+        curso: curso,
+        progreso: "0%",
+        examen: "Pendiente",
+        certificado: "Sin certificado"
+
+    });
+
+
+    localStorage.setItem(
+        "estudiantes",
+        JSON.stringify(estudiantes)
+    );
+
+
+    alert("Estudiante agregado correctamente");
+
+
+    location.reload();
+
+}
+function editarEstudiante(indice){
+
+    let estudiantes = JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+    let estudiante = estudiantes[indice];
+
+
+    let nombre = prompt(
+        "Nombre del estudiante:",
+        estudiante.nombre
+    );
+
+
+    let curso = prompt(
+        "Curso:",
+        estudiante.curso
+    );
+
+
+    let progreso = prompt(
+        "Progreso:",
+        estudiante.progreso
+    );
+
+
+    let examen = prompt(
+        "Estado del examen:",
+        estudiante.examen
+    );
+
+
+    let certificado = prompt(
+        "Certificado:",
+        estudiante.certificado
+    );
+
+    if (
+    nombre === null ||
+    curso === null ||
+    progreso === null ||
+    examen === null ||
+    certificado === null
+) {
+    return;
+}
+
+
+    estudiante.nombre = nombre;
+    estudiante.curso = curso;
+    estudiante.progreso = progreso;
+    estudiante.examen = examen;
+    estudiante.certificado = certificado;
+
+
+    localStorage.setItem(
+        "estudiantes",
+        JSON.stringify(estudiantes)
+    );
+
+
+    location.reload();
+
+}
+
+function eliminarEstudiante(indice){
+    if(confirm("¿Eliminar este estudiante?")){
+
+        let estudiantes = JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+        const estudiante = estudiantes[indice];
+
+        if (!estudiante) {
+            alert("No se encontró el estudiante.");
+            return;
+        }
+
+        estudiantes.splice(indice, 1);
+
+        localStorage.setItem(
+            "estudiantes",
+            JSON.stringify(estudiantes)
+        );
+
+        location.reload();
+    }
+}
+   
+
+
+
+</script>
+
+</table>
+
+
+<br>
+
+<a href="../admin.html" class="boton">
+⬅ Volver al administrador
+</a>
+
+</main>
+
+
+</body>
+</html>

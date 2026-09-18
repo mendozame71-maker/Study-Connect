@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Panel de Administración - Study-Connect</title>
+
+<link rel="stylesheet" href="../css/style.css"> <link rel="stylesheet" href="../css/admin.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>⚙ Panel de Administración</h1>
+
+<p>Study-Connect</p>
+
+</header>
+
+<main>
+
+<div class="tarjeta">
+
+<h2>Bienvenido, Administrador</h2>
+
+<p>Desde aquí podrás administrar toda la plataforma.</p>
+
+<hr>
+
+<h3>📊 Estadísticas</h3>
+
+<p> 👥 Estudiantes registrados: <span id="totalEstudiantes">0</span> </p>
+
+<p> 🎓 Certificados emitidos: <span id="totalCertificados">0</span> </p>
+
+<p> 📚 Cursos disponibles: <span id="totalCursos">3</span> </p>
+
+<p> 📝 Exámenes aprobados: <span id="totalExamenes">0</span> </p>
+
+<hr>
+
+<a href="admin/estudiantes.html" class="boton">
+👥 Ver estudiantes
+</a>
+
+<br><br>
+
+<a href="admin/resultados.html" class="boton">
+📝 Resultados de exámenes
+</a>
+
+<br><br>
+
+<a href="admin/cursos.html" class="boton">
+📚 Administrar cursos
+</a>
+
+<br><br>
+
+<a href="admin/certificados.html" class="boton">
+🎓 Ver certificados
+</a>
+
+<br><br>
+
+<button class="boton" id="btnCerrarSesion">
+🚪 Cerrar sesión
+</button>
+
+
+
+</div>
+
+</main>
+
+<script src="../js/app.js"></script>
+
+<script> let estudiantes = (JSON.parse(localStorage.getItem("estudiantes")) || []).filter(estudiante => estudiante.nombre !== "Administrador"); let cursos = JSON.parse(localStorage.getItem("cursos")) || []; document.getElementById("totalEstudiantes").textContent = estudiantes.length; document.getElementById("totalCertificados").textContent = estudiantes.filter(function(e) { return e.certificado && e.certificado !== "Sin certificado"; }).length; document.getElementById("totalExamenes").textContent = estudiantes.filter(function(e) { return e.examen === "Aprobado"; }).length; document.getElementById("totalCursos").textContent = cursos.length + 3; </script>
+
+<script>
+let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+if (!usuarioActivo || usuarioActivo.rol !== "admin") {
+    window.location.href = "../../index.html";
+}
+
+document.getElementById("btnCerrarSesion").onclick = function() {
+    localStorage.removeItem("usuarioActivo");
+    window.location.href = "../login.html";
+};
+
+</script>
+
+</body>
+
+</html>

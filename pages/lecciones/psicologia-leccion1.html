@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lección 1 - Psicología</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>📘 Psicología</h1>
+<p>Lección 1: ¿Qué es la Psicología?</p>
+
+<nav>
+<a href="../psicologia.html">Volver a Psicología</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<h2>¿Qué es la Psicología?</h2>
+
+<p>
+La Psicología es la ciencia que estudia la mente,
+el comportamiento, las emociones y los procesos
+mentales de las personas.
+</p>
+
+<h2>¿Qué estudia la Psicología?</h2>
+
+<ul>
+<li>🧠 Pensamiento</li>
+<li>😊 Emociones</li>
+<li>👥 Conducta humana</li>
+<li>📚 Aprendizaje</li>
+</ul>
+
+
+<h2>Pregunta de práctica</h2>
+
+<p>
+¿Por qué es importante estudiar Psicología?
+</p>
+
+<h2>Mini evaluación</h2>
+
+<p>
+1. ¿Qué estudia principalmente la Psicología?
+</p>
+
+<button onclick="respuestaCorrecta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+
+<button
+id="btnCompletar"
+class="boton"
+data-curso="psicologia"
+data-leccion="1">
+✅ Marcar lección como completada
+</button>
+
+
+</main>
+<script>
+
+function respuestaCorrecta(){
+
+document.getElementById("resultado").innerHTML =
+"✅ Correcto: La Psicología estudia la mente, las emociones y el comportamiento humano.";
+
+}
+
+</script>
+
+
+<script src="../js/app.js"></script>
+
+</body>
+
+</html>

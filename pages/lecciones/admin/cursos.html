@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Administrar cursos - Study-Connect</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>📚 Administrar cursos</h1>
+    <p>Panel de Administración</p>
+</header>
+
+<main>
+
+
+    <h2>📊 Resumen del sistema</h2>
+
+<table border="1" width="100%">
+    <tr>
+        <th>Estudiantes registrados</th>
+        <th>Cursos disponibles</th>
+        <th>Certificados emitidos</th>
+    </tr>
+
+    <tr>
+        <td id="totalEstudiantes">0</td>
+        <td id="totalCursos">0</td>
+        <td id="totalCertificados">0</td>
+    </tr>
+</table>
+
+<br>
+
+<h2>Cursos disponibles</h2>
+<h3>➕ Agregar nuevo curso</h3>
+
+<input 
+type="text" 
+id="nuevoCurso" 
+placeholder="Nombre del curso">
+
+<button class="boton" onclick="agregarCurso()">
+➕ Agregar curso
+</button>
+
+<table border="1" width="100%">
+
+<tr>
+    <th>Curso</th>
+    <th>Estudiantes inscritos</th>
+    <th>Estado</th>
+    <th>Acciones</th>
+</tr>
+
+
+   <tr>
+
+    <td id="nombrePsicologia">🧠 Psicología</td>
+
+    <td id="psicologia">0</td>
+
+    <td id="estadoPsicologia">Activo ✅</td>
+
+    <td id="accionesPsicologia"></td>
+
+    <tr>
+    <td id="nombreEducacion">📚 Educación</td>
+    <td id="educacion">0</td>
+    <td id="estadoEducacion">Activo ✅</td>
+    <td id="accionesEducacion"></td>
+    <td>
+
+       
+
+        
+        
+
+    </td>
+</tr>
+
+
+<tr>
+    <td id="nombreEstudio">📖 Técnicas de estudio</td>
+    <td id="estudio">0</td>
+    <td id="estadoEstudio">Activo ✅</td>
+    <td id="accionesEstudio"></td>
+
+    <td>
+
+       
+    </td>
+</tr>
+
+</table>
+<hr>
+
+<h3>📚 Cursos agregados por el administrador</h3>
+
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th>Curso</th>
+            <th>Estudiantes</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody id="listaCursos">
+
+    </tbody>
+
+</table>
+
+<br>
+<a href="../admin.html" class="boton">
+⬅ Volver al panel de Administración
+</a>
+</main>
+
+<script>
+
+
+</script>
+
+<script src="../../js/admin-cursos.js"></script>
+<script>
+
+let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+if (!usuarioActivo || usuarioActivo.rol !== "admin") {
+    window.location.href = "../../../index.html";
+}
+
+</script>
+
+</body>
+
+</html>

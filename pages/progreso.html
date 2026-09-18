@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mi progreso - Study Connect</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>📊 Mi progreso</h1>
+    <p>Observa tu avance en los cursos</p>
+
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="dashboard.html">Panel</a>
+    </nav>
+</header>
+
+
+   <main class="contenedorProgreso"></main>
+
+<h2>📈 Mi progreso de aprendizaje</h2>
+
+<div class="tarjeta">
+
+    <h3>📊 Progreso general</h3>
+
+    <p>
+        Has completado:
+        <span id="progresoGeneral">0%</span>
+    </p>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>📚 Educación</h3>
+
+<p>
+Progreso:
+<span id="porcentajeEducacion">0%</span>
+</p>
+
+<progress
+id="barraEducacion"
+value="0"
+max="100">
+</progress>
+
+<p>Total de lecciones: 5</p>
+<p id="estadoEducacion">⚪ Sin iniciar</p>
+<div id="certificadoEducacion"></div>
+</div>
+
+<div class="tarjeta">
+<h3>🧠 Técnicas de Estudio</h3>
+<p>
+Progreso:
+<span id="porcentajeTecnicas">0%</span>
+</p>
+
+<progress
+id="barraTecnicas"
+value="0"
+max="100">
+</progress>
+
+<p>Total de lecciones: 4</p>
+
+<p id="estadoTecnicas">⚪ Sin iniciar</p>
+<p id="certificadoTecnicas"></p>
+
+</div>
+
+
+<div class="tarjeta">
+<h3>😊 Psicología</h3>
+<div id="listaPsicologia">
+</div>
+
+<p>
+    Progreso:
+    <span id="porcentajePsicologia">0%</span>
+</p>
+
+<progress
+    id="barraPsicologia"
+    value="0"
+    max="100">
+</progress>
+
+<p>Total de lecciones: 8</p>
+<p id="continuarPsicologia"></p>
+
+<p id="certificado"></p>
+
+<p id="estadoPsicologia">⚪ Sin iniciar</p>
+<p id="certificadoPsicologia"></p>
+
+</div>
+
+<div class="tarjeta">
+
+<h3>🎯 Objetivo personal</h3>
+
+<p>
+Completar los tres cursos y fortalecer los conocimientos en educación, técnicas de estudio y psicología.
+</p>
+
+</div>
+<div class="tarjeta">
+
+<h3>🏅 Mis insignias</h3>
+
+<p id="insignias">
+Todavía no has obtenido insignias.
+</p>
+
+</div>
+
+
+</main>
+
+<script src="js/progreso.js"></script>
+
+</body>
+
+</html>

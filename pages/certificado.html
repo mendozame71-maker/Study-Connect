@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Certificado - Study-Connect</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #f1f3f6;
+            font-family: Arial, sans-serif;
+        }
+
+      .certificado {
+    width: 900px;
+    min-height: 600px;
+    margin: auto;
+    padding: 50px;
+    box-sizing: border-box;
+    background: white;
+    border: 8px solid #1d3f66;
+    text-align: center;
+}
+
+        h1 {
+            color: #1d3f66;
+            font-size: 42px;
+            letter-spacing: 5px;
+        }
+
+        .institucion {
+            font-size: 22px;
+            color: #555;
+        }
+
+        .contenido {
+            margin-top: 60px;
+        }
+
+        .contenido p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        #nombreAlumno {
+            font-family: Georgia, serif;
+            font-size: 40px;
+            color: #1d3f66;
+            margin: 20px;
+        }
+
+        #nombreCurso {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            color: #222;
+        }
+
+        .numero {
+            margin-top: 35px;
+            font-size: 16px;
+        }
+
+        .firmas {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 70px;
+        }
+
+        .firma {
+            width: 250px;
+        }
+
+        .firma hr {
+            border: none;
+            border-top: 1px solid #333;
+        }
+
+        .firma strong {
+            font-size: 16px;
+        }
+
+        .firma p {
+            color: #555;
+        }
+
+        .volver {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .volver a {
+            padding: 10px 20px;
+            background: #1d3f66;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="certificado">
+
+        <h1>🎓 CERTIFICADO</h1>
+
+        <p class="institucion">
+            Study-Connect
+        </p>
+
+
+        <div class="contenido">
+
+            <p>
+                Se certifica que
+            </p>
+
+            <h2 id="nombreAlumno">
+                Tony
+            </h2>
+
+            <p>
+                ha completado satisfactoriamente el curso
+            </p>
+
+            <h3 id="nombreCurso">
+             Cargando...
+            </h3>
+
+          <p class="numero">
+    Número de certificado:
+    <strong> </strong>
+</p>
+
+<p id="fechaCertificado"></p>
+
+<img
+    id="codigoQR"
+    width="150"
+    height="150"
+    alt="Código QR del certificado">
+
+<br><br>
+
+<button id="btnPDF">
+    🖨️ Descargar certificado PDF
+</button>
+
+
+        </div>
+
+
+        <div class="firmas">
+
+            <div class="firma">
+
+                <hr>
+
+                <strong>
+                    Director Académico
+                </strong>
+
+                <p>
+                    Study-Connect
+                </p>
+
+            </div>
+
+
+            <div class="firma">
+
+                <hr>
+
+                <strong>
+                    Alumno
+                </strong>
+
+                <p>
+                    Tony
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="volver">
+
+        <a href="progreso.html">
+            ← Volver a mi progreso
+        </a>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+
+       const usuarioActivo =
+    JSON.parse(
+        localStorage.getItem("usuarioActivo")
+    );
+
+let numeroCertificado = null;
+
+const parametros =
+    new URLSearchParams(window.location.search);
+
+const certificadoURL =
+    parametros.get("certificado");
+
+const cursoURL =
+    parametros.get("curso");
+
+
+if (usuarioActivo) {
+
+   let nombre =
+    usuarioActivo.nombre || "Alumno";
+
+if (certificadoURL) {
+
+    const estudiantes =
+        JSON.parse(
+            localStorage.getItem("estudiantes")
+        ) || [];
+
+    const estudiante =
+        estudiantes.find(
+            alumno =>
+                alumno.certificado === certificadoURL
+        );
+
+   if (estudiante) {
+
+    nombre = estudiante.nombre;
+
+    document.getElementById(
+        "nombreCurso"
+    ).textContent =
+        estudiante.curso || "Curso no encontrado";
+}
+}
+
+    document.getElementById(
+        "nombreAlumno"
+    ).textContent = nombre;
+
+
+    const firma =
+        document.querySelector(
+            ".firma:last-child p"
+        );
+
+    if (firma) {
+        firma.textContent = nombre;
+    }
+
+
+   // Obtener número del certificado
+
+if (certificadoURL) {
+
+    numeroCertificado = certificadoURL;
+
+} else if (
+    cursoURL &&
+    usuarioActivo.certificados &&
+    usuarioActivo.certificados[cursoURL]
+) {
+
+    numeroCertificado =
+        usuarioActivo.certificados[cursoURL];
+
+} else if (usuarioActivo.certificados) {
+
+    // Buscar el certificado correspondiente
+    // al registro del estudiante
+
+    const estudiantes =
+        JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+    const estudiante =
+        estudiantes.find(
+            alumno =>
+                alumno.nombre.toLowerCase() ===
+                usuarioActivo.nombre.toLowerCase()
+        );
+
+    if (estudiante && estudiante.certificado) {
+
+        numeroCertificado =
+            estudiante.certificado;
+
+    }
+
+}
+
+
+    if (numeroCertificado) {
+
+        document.querySelector(
+            ".numero strong"
+        ).textContent =
+            numeroCertificado;
+
+    }
+
+}
+
+// Generar código QR
+const codigoQR =
+    document.getElementById("codigoQR");
+
+if (codigoQR && numeroCertificado) {
+
+    const enlaceQR =
+        window.location.origin + "/pages/lecciones/verificar-certificado.html?certificado=" +
+        encodeURIComponent(numeroCertificado);
+
+    codigoQR.src =
+        "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
+        encodeURIComponent(enlaceQR);
+
+}
+
+
+// Mostrar el curso
+if (cursoURL) {
+
+    document.getElementById(
+        "nombreCurso"
+    ).textContent =
+        cursoURL;
+
+}
+
+
+// Si viene desde Administración,
+// buscar a qué curso pertenece el número
+else if (
+    numeroCertificado &&
+    usuarioActivo &&
+    usuarioActivo.certificados
+) {
+
+    for (
+        const nombreCurso in usuarioActivo.certificados
+    ) {
+
+        if (
+            usuarioActivo.certificados[nombreCurso] ===
+            numeroCertificado
+        ) {
+
+            document.getElementById(
+                "nombreCurso"
+            ).textContent =
+                nombreCurso;
+
+            break;
+
+        }
+
+    }
+
+}
+    
+
+    const btnPDF =
+document.getElementById("btnPDF");
+
+if (btnPDF) {
+
+    btnPDF.onclick = async function () {
+
+        const certificado =
+            document.querySelector(".certificado");
+
+        btnPDF.disabled = true;
+        btnPDF.textContent = "Generando PDF...";
+
+        try {
+
+            const canvas =
+                await html2canvas(certificado, {
+                    scale: 1.5,
+                    useCORS: true,
+                    backgroundColor: "#ffffff"
+                });
+
+            const imagen =
+                canvas.toDataURL("image/jpeg", 0.95);
+
+            const { jsPDF } = window.jspdf;
+
+            const pdf =
+                new jsPDF({
+                    orientation: "landscape",
+                    unit: "mm",
+                    format: "a4"
+                });
+
+            const anchoPagina = 297;
+            const altoPagina = 210;
+
+            const margen = 5;
+
+            const anchoDisponible =
+                anchoPagina - (margen * 2);
+
+            const altoDisponible =
+                altoPagina - (margen * 2);
+
+            const proporcion =
+                Math.min(
+                    anchoDisponible / canvas.width,
+                    altoDisponible / canvas.height
+                );
+
+            const ancho =
+                canvas.width * proporcion;
+
+            const alto =
+                canvas.height * proporcion;
+
+            const x =
+                (anchoPagina - ancho) / 2;
+
+            const y =
+                (altoPagina - alto) / 2;
+
+            pdf.addImage(
+                imagen,
+                "JPEG",
+                x,
+                y,
+                ancho,
+                alto
+            );
+
+            pdf.save(
+                "Certificado-" +
+                (usuarioActivo.nombre || "Alumno") +
+                ".pdf"
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Error al generar PDF:",
+                error
+            );
+
+            alert(
+                "No se pudo generar el PDF."
+            );
+
+        }
+
+        btnPDF.disabled = false;
+        btnPDF.textContent =
+            "🖨️ Descargar certificado PDF";
+
+    };
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+// ===============================
+// PÁGINA MI PROGRESO
+// ===============================
+
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+if (usuarioActivo) {
+
+}
+
+    // ===============================
+    // PSICOLOGÍA
+    // ===============================
+
+    const barraPsicologia = document.getElementById("barraPsicologia");
+
+    if (barraPsicologia) {
+
+        const totalLecciones = 8;
+        let completadas = 0;
+        let lista = "";
+
+        for (let i = 1; i <= totalLecciones; i++) {
+
+            if (usuarioActivo.progreso.psicologia["leccion" + i]) {
+
+                lista += "✔ Lección " + i + " completada<br>";
+                completadas++;
+
+            } else {
+
+                lista += "⬜ Lección " + i + " pendiente<br>";
+
+            }
+
+        }
+
+        const porcentaje = Math.round((completadas / totalLecciones) * 100);
+
+        barraPsicologia.value = porcentaje;
+        document.getElementById("porcentajePsicologia").innerHTML = porcentaje + "%";
+        document.getElementById("listaPsicologia").innerHTML = lista;
+
+        // Botón continuar
+
+        let siguienteLeccion = 0;
+
+        for (let i = 1; i <= totalLecciones; i++) {
+
+            if (!usuarioActivo.progreso.psicologia["leccion" + i]) {
+
+                siguienteLeccion = i;
+                break;
+
+            }
+
+        }
+
+        if (siguienteLeccion !== 0) {
+
+            document.getElementById("continuarPsicologia").innerHTML = `
+<a href="lecciones/psicologia-leccion${siguienteLeccion}.html" class="boton">
+▶ Continuar Lección ${siguienteLeccion}
+</a>`;
+
+        } else {
+
+            document.getElementById("continuarPsicologia").innerHTML =
+                "<p>🎉 Curso completado</p>";
+
+        }
+
+       
+
+     } const estadoExamen = document.getElementById("estadoExamen");
+
+if (estadoExamen) {
+
+    if (porcentaje === 100) {
+
+        if (usuarioActivo.progreso.psicologia.examen) {
+
+            estadoExamen.innerHTML =
+                "✅ Examen final: Aprobado";
+
+        } else {
+
+            estadoExamen.innerHTML = `
+                <a href="../lecciones/psicologia-examen.html" class="boton">
+                    📝 Presentar examen final
+                </a>
+            `;
+
+        }
+
+    } else {
+
+        estadoExamen.innerHTML =
+            "🔒 Completa todas las lecciones para desbloquear el examen final.";
+
+    }
+
+}
+    // Certificado de Psicología
+
+const certificado = document.getElementById("certificado");
+
+if (certificado) {
+
+    if (porcentaje === 100 && usuarioActivo.progreso.psicologia.examen) {
+
+        certificado.innerHTML = `
+        <a href="certificado.html?curso=Psicología" class="boton">
+        🎓 Ver certificado de Psicología
+        </a>
+        `;
+
+    } else {
+
+        certificado.innerHTML =
+        "🔒 Certificado disponible al completar el curso y aprobar el examen.";
+
+    }
+
+
+
+    // ===============================
+    // EDUCACIÓN
+    // ===============================
+
+    const barraEducacion = document.getElementById("barraEducacion");
+
+    if (barraEducacion) {
+
+        let completadas = 0;
+
+        for (let i = 1; i <= 5; i++) {
+
+            if (usuarioActivo.progreso.educacion["leccion" + i]) {
+
+                completadas++;
+
+            }
+
+        }
+
+        const porcentaje = Math.round((completadas / 5) * 100);
+
+        barraEducacion.value = porcentaje;
+        document.getElementById("porcentajeEducacion").innerHTML = porcentaje + "%";
+
+    }
+
+    // ===============================
+    // TÉCNICAS DE ESTUDIO
+    // ===============================
+
+    const barraTecnicas = document.getElementById("barraTecnicas");
+
+    if (barraTecnicas) {
+
+        let completadas = 0;
+
+        for (let i = 1; i <= 4; i++) {
+
+            if (usuarioActivo.progreso.tecnicas["leccion" + i]) {
+
+                completadas++;
+
+            }
+
+        }
+
+        const porcentaje = Math.round((completadas / 4) * 100);
+
+        barraTecnicas.value = porcentaje;
+        document.getElementById("porcentajeTecnicas").innerHTML = porcentaje + "%";
+
+    }
+
+    // ===============================
+    // INSIGNIAS
+    // ===============================
+
+    const insignias = document.getElementById("insignias");
+
+    if (insignias && usuarioActivo.progreso.psicologia.examen) {
+
+        insignias.innerHTML =
+            "🏅 Insignia obtenida:<br><br>" +
+            "🧠 Explorador de Psicología<br>" +
+            "Completaste el examen final.";
+   }
+}
+

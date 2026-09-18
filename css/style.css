@@ -1,0 +1,1414 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #2563eb;
+    color: white;
+    padding: 20px;
+}
+
+main {
+    padding: 30px;
+}
+
+h1 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    margin: 10px auto;
+    padding: 15px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+/* Cursos del perfil */
+.cursosPerfil {
+    text-align: center;
+}
+
+.cursosPerfil li {
+    margin: 10px auto;
+}
+button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+.cursos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.tarjeta {
+    background: white;
+    width: 280px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.tarjeta h3 {
+    color: #2563eb;
+}
+
+.tarjeta a {
+    display: inline-block;
+    margin-top: 15px;
+    background: #2563eb;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.tarjeta a:hover {
+    background: #1d4ed8;
+}
+.boton {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.boton:hover {
+    background: #1d4ed8;
+}
+/* ===========================
+   MEJORAS DE STUDY CONNECT
+=========================== */
+
+
+body{
+    color:#333;
+    line-height:1.6;
+}
+
+header{
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+
+main{
+    max-width:1200px;
+    margin:auto;
+}
+
+.tarjeta{
+    transition:transform .3s, box-shadow .3s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+
+.boton{
+    transition:background .3s, transform .3s;
+}
+
+.boton:hover{
+    transform:scale(1.05);
+}
+
+input{
+    width:300px;
+    max-width:90%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+form{
+    margin-top:20px;
+}
+
+footer{
+    background:#2563eb;
+    color:white;
+    padding:20px;
+    margin-top:40px;
+}
+/* ===========================
+   STUDY-CONNECT VERSION 2
+=========================== */
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#eef4ff;
+}
+
+header h1{
+    font-size:38px;
+}
+
+header p{
+    font-size:18px;
+    opacity:.95;
+}
+
+.tarjeta{
+    margin:20px auto;
+}
+
+.tarjeta:hover{
+
+    transform:translateY(-10px) scale(1.02);
+
+}
+
+.boton{
+
+    font-weight:bold;
+    letter-spacing:.5px;
+
+}
+
+.boton:hover{
+
+    box-shadow:0 8px 20px rgba(37,99,235,.35);
+
+}
+
+footer{
+
+    text-align:center;
+    font-size:15px;
+
+}
+
+/* ========= CELULARES ========= */
+
+@media (max-width:768px){
+
+header{
+
+padding:15px;
+
+}
+
+header h1{
+
+font-size:28px;
+
+}
+
+main{
+
+padding:20px;
+
+}
+
+.tarjeta{
+
+width:95%;
+
+}
+
+li{
+
+width:95%;
+
+}
+
+.boton{
+
+display:block;
+
+margin:15px auto;
+
+width:90%;
+
+}
+
+}
+
+
+.certificado {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+    padding: 25px;
+
+    text-align: center;
+
+    background: white;
+
+    border: 8px double #c9a227;
+
+    border-radius: 15px;
+
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+
+    box-sizing: border-box;
+
+    page-break-inside: avoid;
+}
+
+
+
+.nombre {
+
+    font-size: 40px;
+
+    color: #1a4d8f;
+
+    text-transform: uppercase;
+
+}
+
+
+.texto {
+
+    font-size: 20px;
+
+}
+
+
+.curso {
+
+    color: #333;
+
+}
+
+
+.felicidades {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+
+.firma {
+
+    margin-top:40px;
+
+}
+
+
+#fecha {
+
+    margin-top:30px;
+
+    font-size:18px;
+
+}
+.certificado {
+
+    max-width: 850px;
+
+    margin: 40px auto;
+
+    padding: 60px;
+
+    text-align: center;
+
+    background: #fffdf5;
+
+    border: 10px double #c9a227;
+
+    border-radius: 20px;
+
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+
+}
+.certificado h1 {
+
+    font-size: 45px;
+
+    color: #b8860b;
+
+}
+
+
+.certificado h2 {
+
+    font-size: 32px;
+
+}
+
+
+.nombre {
+
+    font-size: 45px;
+
+    color: #1a4d8f;
+
+    text-transform: uppercase;
+
+}
+
+
+.texto {
+
+    font-size: 22px;
+
+}
+
+
+.curso {
+
+    font-size: 30px;
+
+}
+
+
+.felicidades {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+
+.firma {
+
+    margin-top:50px;
+
+    font-size:18px;
+
+}
+
+
+.fecha {
+
+    margin-top:30px;
+
+    font-size:18px;
+
+}
+
+
+.numeroCertificado {
+
+    font-size:16px;
+
+    color:#555;
+
+}
+/* ===============================
+   DISEÑO DIPLOMA PROFESIONAL
+================================ */
+
+.certificado {
+
+    max-width: 900px;
+
+    margin: 50px auto;
+
+    padding: 70px;
+
+    text-align: center;
+
+    background: #fffdf7;
+
+    border: 12px double #b8860b;
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 35px rgba(0,0,0,0.25);
+
+    position: relative;
+
+}
+
+
+.certificado::before {
+
+    content: "🎓";
+
+    position: absolute;
+
+    top: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 45px;
+
+}
+
+
+.certificado h1 {
+
+    margin-top: 60px;
+
+    font-size: 48px;
+
+    color: #b8860b;
+
+    letter-spacing: 2px;
+
+}
+
+
+.certificado h2 {
+
+    font-size: 34px;
+
+    color: #333;
+
+}
+
+
+.numeroCertificado {
+
+    font-size: 16px;
+
+    color: #666;
+
+    margin-bottom: 40px;
+
+}
+
+
+.texto {
+
+    font-size: 22px;
+
+    line-height: 1.6;
+
+}
+
+
+.nombre {
+
+    font-size: 50px;
+
+    color: #174a8b;
+
+    text-transform: uppercase;
+
+    margin: 25px;
+
+    font-family: Georgia, serif;
+
+}
+
+
+.curso {
+
+    font-size: 36px;
+
+    color: #222;
+
+}
+
+
+.felicidades {
+
+    font-size: 24px;
+
+    font-style: italic;
+
+    margin-top: 35px;
+
+}
+
+
+.firma {
+
+    margin-top: 70px;
+
+    font-size: 18px;
+
+}
+
+
+.fecha {
+
+    margin-top: 40px;
+
+    font-size: 18px;
+
+    color: #555;
+
+}
+/* LOGO */
+
+.logoStudy {
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: #1a4d8f;
+
+    margin-bottom: 20px;
+
+}
+
+
+.logoStudy span {
+
+    margin-left: 10px;
+
+}
+/* SELLO DIGITAL */
+
+.sello {
+
+    width: 130px;
+
+    height: 130px;
+
+    border: 5px solid #b8860b;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 40px auto 0;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    color: #b8860b;
+
+    transform: rotate(-15deg);
+
+}
+
+
+/* LOGO */
+
+.logoStudy{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.logo{
+
+    width:220px;
+
+    height:auto;
+
+}
+/* ===== CERTIFICADO ===== */
+
+.tarjeta{
+
+    max-width:800px;
+    margin:auto;
+    padding:40px;
+    background:white;
+    border:8px solid #d4af37;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+}
+
+.logo-certificado{
+
+    font-size:32px;
+    font-weight:bold;
+    color:#1e88e5;
+    margin-bottom:20px;
+
+}
+
+.firma{
+    display:flex;
+    justify-content:space-around;
+    margin-top:20px;
+}
+
+.firma hr{
+
+    width:250px;
+
+}
+
+@media print{
+
+button,
+a{
+
+display:none;
+
+}
+
+body{
+
+background:white;
+
+}
+
+.tarjeta{
+
+box-shadow:none;
+
+border:8px solid #d4af37;
+
+}
+
+}
+.logo {
+    width: 120px;
+    display: block;
+    margin: auto;
+}
+.codigoQR{
+    text-align: center;
+    margin-top: 25px;
+}
+
+.codigoQR img{
+    width: 140px;
+    height: 140px;
+}
+
+.codigoQR p{
+    font-size: 14px;
+    color: #555;
+}
+.certificado{
+    border: 8px solid #c9a227;
+    padding: 40px;
+    background: #fff;
+    text-align: center;
+    position: relative;
+    margin-top: 0;
+}
+.contenedor{
+    padding-top: 20px;
+}
+
+
+.certificado:before{
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 2px solid #c9a227;
+    pointer-events: none;
+}
+
+
+.encabezado-certificado h1{
+    font-size: 32px;
+}
+
+
+.firma{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+
+.firma div{
+    width: 200px;
+}
+
+
+.firma hr{
+    border: none;
+    border-top: 1px solid #333;
+}
+header{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+header h1{
+    margin-bottom: 5px;
+}
+
+header p{
+    margin-top: 5px;
+}
+header + .contenedor{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+main.contenedor{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+.firma{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-top:40px;
+}
+
+
+.firma-img{
+
+    width:120px;
+
+}
+
+
+.sello{
+
+    border:4px solid #555;
+    border-radius:50%;
+    width:130px;
+    height:130px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    font-size:14px;
+
+}
+
+
+.qr{
+
+    text-align:center;
+    margin-top:30px;
+
+}
+
+
+.qr img{
+
+    width:150px;
+
+}
+
+/* ===============================
+   CERTIFICADO OFICIAL
+================================ */
+
+.contenedor-certificado{
+    display:flex;
+    justify-content:center;
+    padding:20px;
+}
+
+.certificado-oficial{
+
+       width:950px;
+    min-height:auto;
+
+    background:white;
+
+    border:8px double #c9a227;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-sizing:border-box;
+
+}
+@media print {
+
+    @page {
+        size: A4 landscape;
+        margin: 10mm;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    .certificado-oficial {
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+        border: 6px double #c9a227;
+        box-shadow: none;
+    }
+
+    .firma {
+        margin-top: 15px;
+    }
+
+    button,
+    a {
+        display: none !important;
+    }
+}
+
+/* ==========================
+   CERTIFICADO PSICOLOGÍA
+========================== */
+
+.contenedor-certificado{
+    display:flex;
+    justify-content:center;
+    padding:20px;
+}
+
+
+.certificado{
+    width: 297mm;
+    min-height: 210mm;
+
+    box-sizing: border-box;
+
+    padding: 20mm;
+
+    background: #fff;
+
+    border: 10px double #c9a227;
+
+    text-align: center;
+
+    box-shadow: none;
+
+    margin: 0 auto;
+}
+
+
+.logo{
+    width:150px;
+}
+
+
+.nombre{
+
+    font-size:45px;
+    color:#174a8b;
+    text-transform:uppercase;
+
+}
+
+
+.curso{
+
+    font-size:30px;
+
+}
+
+
+.firma{
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-top:50px;
+
+}
+
+
+.sello{
+
+    border:4px solid #b8860b;
+    border-radius:50%;
+
+    width:130px;
+    height:130px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:13px;
+
+}
+
+
+.qr img{
+
+    width:150px;
+
+}
+
+.fotoPerfil{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.foto{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:4px solid #2563eb;
+    object-fit:cover;
+}
+
+.contenedor ul {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+}
+
+.contenedor ul li {
+    margin: 10px 0;
+}
+
+.cursosPerfil {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.cursosPerfil li {
+    text-align: center;
+    margin: 12px 0;
+}
+
+.tarjeta {
+    text-align: center;
+}
+
+.perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.perfil label,
+.perfil input {
+    width: 80%;
+    max-width: 350px;
+}
+
+.cursosPerfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.cursosPerfil li {
+    width: 300px;
+    text-align: center;
+}
+
+progress {
+    width: 100%;
+    height: 20px;
+    margin: 10px 0;
+}
+
+progress {
+    width: 100%;
+    height: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    accent-color: #2563eb;
+}
+
+progress::-webkit-progress-bar {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background: #2563eb;
+    border-radius: 10px;
+}
+
+progress::-moz-progress-bar {
+    background: #2563eb;
+    border-radius: 10px;
+}
+
+/* ===== TARJETAS DE RESUMEN ===== */
+
+.estadisticas{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
+
+.estadistica{
+    width:170px;
+    background:#ffffff;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.10);
+    transition:.3s;
+}
+
+.estadistica:hover{
+    transform:translateY(-5px);
+}
+
+.estadistica h3{
+    font-size:35px;
+    margin:0;
+}
+
+.estadistica h2{
+    margin:10px 0;
+    color:#2563eb;
+    font-size:30px;
+}
+
+.estadistica p{
+    color:#666;
+    margin:0;
+}
+
+/* ===== MENÚ PRINCIPAL ===== */
+
+.menuPrincipal{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.menuPrincipal a{
+    text-decoration:none;
+    color:white;
+    background:#1d4ed8;
+    padding:10px 18px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.menuPrincipal a:hover{
+    background:#1e40af;
+    transform:translateY(-2px);
+}
+/* ==============================
+   CERTIFICADOS DEL ESTUDIANTE
+   ============================== */
+
+.listaCertificados {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.listaCertificados .tarjeta {
+    width: 300px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.listaCertificados .tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.listaCertificados .tarjeta h2 {
+    margin-bottom: 15px;
+}
+
+.listaCertificados .tarjeta p {
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+.listaCertificados .tarjeta .boton {
+    display: inline-block;
+    margin-top: auto;
+}
+/* ==============================
+   DISEÑO DE MI PROGRESO
+   ============================== */
+
+.contenedorProgreso {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.contenedorProgreso > h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.contenedorProgreso > .tarjeta {
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.contenedorProgreso > .tarjeta:first-of-type {
+    width: 100%;
+    max-width: 650px;
+}
+
+.contenedorProgreso > .tarjeta:last-child {
+    width: 100%;
+    max-width: 650px;
+}
+
+/* ==============================
+   PORTADA STUDY-CONNECT
+   ============================== */
+
+.inicio main {
+    padding: 40px 20px;
+}
+
+.inicio main > h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.inicio main > p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.inicio .cursos {
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.inicio .cursos .tarjeta {
+    width: 300px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inicio .cursos .tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.inicio .cursos .tarjeta h3 {
+    font-size: 22px;
+}
+
+.inicio .cursos .tarjeta p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.inicio > img {
+    display: block;
+    margin: 25px auto 10px;
+}
+
+.inicio main > .boton {
+    margin-top: 30px;
+    font-size: 17px;
+}
+
+/* ==============================
+   PÁGINA EDUCACIÓN
+   ============================== */
+
+.educacion main {
+    padding: 40px 20px;
+}
+
+.educacion main > h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.educacion main > .tarjeta {
+    width: 300px;
+    min-height: 180px;
+    box-sizing: border-box;
+    display: inline-flex;
+    vertical-align: top;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.educacion main > .tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.educacion main > .tarjeta h3 {
+    font-size: 21px;
+}
+
+.educacion main > .tarjeta p {
+    line-height: 1.6;
+}
+
+.educacion main > .tarjeta .boton {
+    margin-top: 15px;
+}
+
+.educacion progress {
+    width: 100%;
+    height: 20px;
+    margin-top: 10px;
+}
+
+/* ==============================
+   PÁGINA TÉCNICAS DE ESTUDIO
+   ============================== */
+
+.estudio main {
+    padding: 40px 20px;
+}
+
+.estudio main > h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.estudio main > .tarjeta {
+    width: 300px;
+    min-height: 180px;
+    box-sizing: border-box;
+    display: inline-flex;
+    vertical-align: top;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.estudio main > .tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.estudio main > .tarjeta h3 {
+    font-size: 21px;
+}
+
+.estudio main > .tarjeta p {
+    line-height: 1.6;
+}
+
+.estudio main > .tarjeta .boton {
+    margin-top: 15px;
+}
+/* ==============================
+   PÁGINA PSICOLOGÍA
+   ============================== */
+
+.psicologia main {
+    padding: 40px 20px;
+}
+
+.psicologia main > h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.psicologia main > .tarjeta {
+    width: 300px;
+    min-height: 180px;
+    box-sizing: border-box;
+    display: inline-flex;
+    vertical-align: top;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.psicologia main > .tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.psicologia main > .tarjeta h3 {
+    font-size: 21px;
+}
+
+.psicologia main > .tarjeta p {
+    line-height: 1.6;
+}
+
+.psicologia main > .tarjeta .boton {
+    margin-top: 15px;
+}
+
+.psicologia .tarjeta:nth-of-type(9) {
+    min-height: 180px;
+}
+
+.psicologia .tarjeta-leccion8 {
+    min-height: 370px;
+    height: 370px;
+    box-sizing: border-box;
+}
+
+
+
+
+

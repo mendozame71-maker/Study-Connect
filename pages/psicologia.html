@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Psicología - Study Connect</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="psicologia">
+
+<header>
+    <h1>📘 Psicología</h1>
+    <p>Aprende cómo funciona la mente humana</p>
+
+    <nav>
+        <a href="../index.html">Inicio</a>
+    </nav>
+</header>
+
+<main>
+
+    <h2>Cursos de Psicología</h2>
+
+<div class="tarjeta">
+
+<h3>🧠 Introducción a la Psicología</h3>
+
+<p>
+Lección 1: ¿Qué es la Psicología?
+</p>
+
+<a href="lecciones/psicologia-leccion1.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>📜 Historia de la Psicología</h3>
+
+<p>
+Lección 2: Historia de la Psicología
+</p>
+
+<a href="lecciones/psicologia-leccion2.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>🧠 Ramas de la Psicología</h3>
+
+<p>
+Lección 3: Ramas de la Psicología
+</p>
+
+<a href="lecciones/psicologia-leccion3.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>🧠 Psicología del Aprendizaje</h3>
+
+<p>
+Lección 4: Cómo aprendemos y recordamos información
+</p>
+
+<a href="lecciones/psicologia-leccion4.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>😊 Inteligencia emocional</h3>
+
+<p>
+Lección 5: Aprende a comprender y controlar tus emociones.
+</p>
+
+<a href="lecciones/psicologia-leccion5.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>💪 Autoestima y confianza</h3>
+
+<p>
+Lección 6: Aprende a valorar tus capacidades y fortalecer tu confianza.
+</p>
+
+<a href="lecciones/psicologia-leccion6.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>😌 Manejo del estrés y la ansiedad</h3>
+
+<p>
+Lección 7: Aprende estrategias para afrontar el estrés de forma saludable.
+</p>
+
+<a href="lecciones/psicologia-leccion7.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta tarjeta-leccion8">
+
+<h3>🎯 Motivación y establecimiento de metas</h3>
+
+<p>
+Lección 8: Aprende a mantener la motivación y alcanzar tus objetivos.
+</p>
+
+<a href="lecciones/psicologia-leccion8.html" class="boton">
+Comenzar lección
+</a>
+
+<div>
+<div class="tarjeta examen-final">
+<h3>📝 Examen final</h3>
+
+<p>
+Cuando completes las 8 lecciones, presenta el examen para obtener tu certificado de Psicología.
+</p>
+
+<div id="accesoExamen">
+
+<p>
+🔒 Debes completar las 8 lecciones para desbloquear el examen.
+</p>
+
+</div>
+
+<div>
+
+
+</main>
+<script>
+
+let usuario = JSON.parse(localStorage.getItem("usuario"));
+
+let estudiantes = JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+if(usuario){
+
+    estudiantes = estudiantes.map(estudiante => {
+
+        if(estudiante.nombre === usuario.nombre){
+
+            estudiante.curso = "Psicología";
+
+        }
+
+        return estudiante;
+
+    });
+
+    localStorage.setItem("estudiantes", JSON.stringify(estudiantes));
+
+}
+
+
+window.onload = function(){
+
+const completadas =
+Number(localStorage.getItem("psicologiaCompletadas")) || 0;
+
+if(completadas >= 8){
+
+document.getElementById("accesoExamen").innerHTML = `
+<a href="lecciones/psicologia-examen.html" class="boton">
+📝 Presentar examen
+</a>
+`;
+
+
+
+}
+
+};
+
+
+
+</script>
+
+</body>
+
+</html>

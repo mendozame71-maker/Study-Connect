@@ -1,0 +1,201 @@
+.tarjeta{
+    border:2px solid #2563eb;
+}
+
+.estadistica{
+    position: relative;
+    overflow: hidden;
+}
+
+.estadistica::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:#2563eb;
+}
+
+#estadoPsicologia{
+    font-weight:bold;
+    color:#f59e0b;
+    margin-top:10px;
+}
+/* ==============================
+   MEJORA VISUAL DE LAS TARJETAS
+   ============================== */
+
+.tarjeta {
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.12);
+}
+.estadistica {
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ==============================
+   MEJORA DEL MENÚ PRINCIPAL
+   ============================== */
+
+.menuPrincipal a {
+    padding: 11px 18px;
+    border-radius: 10px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.menuPrincipal a:hover {
+    transform: translateY(-2px);
+    background: #1e40af;
+}
+
+/* ==============================
+   MEJORA DE LAS BARRAS DE PROGRESO
+   ============================== */
+
+.tarjeta progress {
+    width: 100%;
+    height: 18px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tarjeta progress::-webkit-progress-bar {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.tarjeta progress::-webkit-progress-value {
+    background: #2563eb;
+    border-radius: 10px;
+}
+
+.tarjeta progress::-moz-progress-bar {
+    background: #2563eb;
+    border-radius: 10px;
+}
+
+/* ==============================
+   MEJORA DE LOS BOTONES DE CURSOS
+   ============================== */
+
+.tarjeta .boton {
+    border-radius: 10px;
+    padding: 10px 18px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta .boton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ==============================
+   MEJORA DEL TÍTULO DE LOS CURSOS
+   ============================== */
+
+.tarjeta h3 {
+    margin-bottom: 10px;
+    font-size: 21px;
+}
+
+/* ==============================
+   MEJORA DEL ESTADO DEL CURSO
+   ============================== */
+
+.tarjeta p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* ==============================
+   MEJORA DE LAS ESTADÍSTICAS
+   ============================== */
+
+.estadistica strong {
+    font-size: 24px;
+    display: block;
+    margin-top: 5px;
+}
+
+.estadisticas {
+    gap: 18px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.estadisticas .estadistica {
+    width: 200px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* ==============================
+   MEJORA DEL ESPACIO ENTRE CURSOS
+   ============================== */
+
+.cursos {
+    gap: 20px;
+    align-items: stretch;
+}
+
+.cursos .tarjeta {
+    width: 300px;
+    box-sizing: border-box;
+}
+
+/* ==============================
+   MEJORA VISUAL DE LA SECCIÓN CURSOS
+   ============================== */
+
+.cursos {
+    padding: 10px 0;
+}
+
+.cursos h2 {
+    margin-bottom: 20px;
+}
+
+/* ==============================
+   TARJETA DE CERTIFICADOS
+   ============================== */
+
+.tarjeta h3 {
+    margin-bottom: 12px;
+}
+
+.tarjeta .boton {
+    display: inline-block;
+    margin-top: 8px;
+}
+/* ==============================
+   MEJORA DEL CONSEJO DEL DÍA
+   ============================== */
+
+.consejo {
+    margin-top: 25px;
+    text-align: center;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.consejo h2 {
+    margin-bottom: 12px;
+}
+
+.consejo p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+}

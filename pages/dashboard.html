@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Panel del estudiante - Study Connect</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎓 Panel del estudiante</h1>
+    <p id="bienvenida"></p>
+    <p>Bienvenido a tu espacio de aprendizaje</p>
+
+    <nav class="menuPrincipal">
+
+    <a href="../../index.html">🏠 Inicio</a>
+
+    <a href="dashboard.html">📚 Cursos</a>
+
+    <a href="progreso.html">📊 Progreso</a>
+
+    <a href="certificados.html">🏆 Certificados</a>
+
+    <a href="perfil.html">👤 Mi Perfil</a>
+
+    <a href="../../index.html" onclick="localStorage.removeItem('usuarioActivo')">🚪 Salir</a>
+</nav>
+</header>
+
+<main>
+
+   <h2 id="saludoUsuario">Hola 👋</h2>
+<p>
+Este es tu espacio personal para aprender, practicar y mejorar tus conocimientos.
+</p>
+
+<div class="estadisticas">
+
+    <div class="estadistica">
+        <h3>📚</h3>
+        <h2>3</h2>
+        <p>Cursos</p>
+    </div>
+
+    <div class="estadistica">
+        <h3>📊</h3>
+        
+        <h2 id="resumenProgreso">0%</h2>
+        <p>Progreso</p>
+    </div>
+
+    <div class="estadistica">
+    <h3>🏆</h3>
+    <h2 id="resumenCertificados">0</h2>
+    <p>Certificados</p>
+</div>
+
+    <div class="estadistica">
+        <h3>🎯</h3>
+        <h2>Meta</h2>
+        <p>Aprender</p>
+    </div>
+
+</div>
+
+
+<div class="cursos">
+
+
+<div class="tarjeta">
+
+<h3>📘 Psicología</h3>
+
+<p>
+Aprende sobre la mente humana, emociones y comportamiento.
+</p>
+
+<p>
+📚 8 lecciones disponibles
+</p>
+
+<p>📊 Progreso</p>
+
+<progress
+    id="barraDashboardPsicologia"
+    value="0"
+    max="100">
+</progress>
+
+<p>
+<span id="dashPsicologia">0%</span>
+</p>
+
+<p id="estadoPsicologia">
+🟡 En progreso
+</p>
+
+<a 
+href="psicologia.html" 
+class="boton"
+id="botonPsicologia">
+Entrar al curso
+</a>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>📚 Educación</h3>
+
+<p>
+Conoce métodos de enseñanza y aprendizaje.
+</p>
+
+<p>
+📚 5 lecciones disponibles
+</p>
+
+<p>📊 Progreso</p>
+
+<progress
+id="barraDashboardEducacion"
+value="0"
+max="100">
+</progress>
+
+<p>
+<span id="dashEducacion">0%</span>
+</p>
+
+<p id="estadoEducacion">
+⚪ Sin iniciar
+</p>
+
+<a 
+href="educacion.html"
+class="boton"
+id="botonEducacion">
+🚀 Iniciar curso
+</a>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>🧠 Técnicas de estudio</h3>
+
+<p>
+Aprende estrategias para estudiar mejor y recordar más.
+</p>
+
+<p>
+📚 4 lecciones disponibles
+</p>
+
+<p>📊 Progreso</p>
+
+<progress
+id="barraDashboardTecnicas"
+value="0"
+max="100">
+</progress>
+
+<p>
+<span id="dashTecnicas">0%</span>
+</p>
+
+<p id="estadoTecnicas">
+⚪ Sin iniciar
+</p>
+
+<a
+href="estudio.html"
+class="boton"
+id="botonTecnicas">
+🚀 Iniciar curso
+</a>
+
+</div>
+
+<div class="tarjeta">
+
+<h3>🎯 Certificados</h3>
+
+<p>
+Obtén y consulta los certificados de los cursos que completes en Study-Connect.
+</p>
+
+<a href="certificados.html" class="boton">
+📜 Mis Certificados
+</a>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>💡 Consejo del día</h3>
+
+<p>
+"El aprendizaje constante es la llave para mejorar cada día."
+</p>
+
+</div>
+</div>
+
+</main>
+
+<script>
+const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+if (!usuario) {
+   window.location.href = "login.html";
+} else {
+    document.getElementById("bienvenida").textContent =
+        "Hola, " + usuario.nombre + " 👋";
+          document.getElementById("saludoUsuario").textContent =
+        "Hola, " + usuario.nombre + " 👋";
+}
+
+// Mostrar progreso de Psicología en el panel
+
+const totalLecciones = 8;
+let completadas = 0;
+let porcentaje = 0;
+
+if (usuario && usuario.progreso && usuario.progreso.psicologia) {
+
+    for (let i = 1; i <= totalLecciones; i++) {
+
+        if (usuario.progreso.psicologia["leccion" + i]) {
+            completadas++;
+        }
+
+    }
+
+   porcentaje = Math.round((completadas / totalLecciones) * 100);
+    document.getElementById("dashPsicologia").textContent =
+        porcentaje + "%";
+        document.getElementById("barraDashboardPsicologia").value =
+    porcentaje;
+
+    const estado = document.getElementById("estadoPsicologia");
+
+    const boton = document.getElementById("botonPsicologia");
+
+
+if (localStorage.getItem("estadoPsicologia") === "inactivo") {
+
+    estado.textContent = "🔴 Curso temporalmente inactivo";
+    estado.style.color = "#dc2626";
+
+    boton.textContent = "🚫 Curso no disponible";
+    boton.removeAttribute("href");
+    boton.style.pointerEvents = "none";
+    boton.style.opacity = "0.6";
+
+} else if (porcentaje === 0) {
+
+    estado.textContent = "⚪ Sin iniciar";
+    estado.style.color = "#6b7280";
+
+    boton.textContent = "🚀 Iniciar curso";
+    boton.href = "psicologia.html";
+    boton.style.pointerEvents = "auto";
+    boton.style.opacity = "1";
+
+} else if (porcentaje < 100) {
+
+    estado.textContent = "🟡 En progreso";
+    estado.style.color = "#f59e0b";
+
+    boton.textContent = "▶ Continuar curso";
+    boton.href = "psicologia.html";
+    boton.style.pointerEvents = "auto";
+    boton.style.opacity = "1";
+
+} else {
+
+    estado.textContent = "🟢 Completado";
+    estado.style.color = "#16a34a";
+
+    boton.textContent = "🏆 Ver certificado";
+
+    const estudiantes =
+        JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+    const estudiante =
+        estudiantes.find(function(e) {
+
+            return e.nombre.toLowerCase() ===
+                usuario.nombre.toLowerCase()
+                &&
+                e.curso.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") ===
+                "psicologia";
+
+        });
+
+    if (
+        estudiante &&
+        estudiante.certificado &&
+        estudiante.certificado !== "Sin certificado"
+    ) {
+
+        boton.href =
+            "certificado.html?certificado=" +
+            encodeURIComponent(estudiante.certificado);
+
+    } else {
+
+        boton.href = "certificado.html";
+
+    }
+
+    boton.style.pointerEvents = "auto";
+    boton.style.opacity = "1";
+
+}
+}
+
+const totalEducacion = 5;
+let completadasEducacion = 0;
+
+if (usuario && usuario.progreso && usuario.progreso.educacion) {
+
+    for (let i = 1; i <= totalEducacion; i++) {
+
+        if (usuario.progreso.educacion["leccion" + i]) {
+            completadasEducacion++;
+        }
+
+    }
+
+}
+
+const porcentajeEducacion = Math.round(
+    (completadasEducacion / totalEducacion) * 100
+);
+
+document.getElementById("dashEducacion").textContent =
+    porcentajeEducacion + "%";
+
+document.getElementById("barraDashboardEducacion").value =
+    porcentajeEducacion;
+
+const estadoEducacion =
+    document.getElementById("estadoEducacion");
+
+const botonEducacion =
+    document.getElementById("botonEducacion");
+
+if (localStorage.getItem("estadoEducacion") === "inactivo") {
+
+    estadoEducacion.textContent = "🔴 Curso temporalmente inactivo";
+    estadoEducacion.style.color = "#dc2626";
+
+    botonEducacion.textContent = "🚫 Curso no disponible";
+    botonEducacion.removeAttribute("href");
+    botonEducacion.style.pointerEvents = "none";
+    botonEducacion.style.opacity = "0.6";
+
+} else if (porcentajeEducacion === 0) {
+
+    estadoEducacion.textContent = "⚪ Sin iniciar";
+    estadoEducacion.style.color = "#6b7280";
+
+    botonEducacion.textContent = "🚀 Iniciar curso";
+    botonEducacion.href = "educacion.html";
+    botonEducacion.style.pointerEvents = "auto";
+    botonEducacion.style.opacity = "1";
+
+} else if (porcentajeEducacion < 100) {
+
+    estadoEducacion.textContent = "🟡 En progreso";
+    estadoEducacion.style.color = "#f59e0b";
+
+    botonEducacion.textContent = "▶ Continuar curso";
+    botonEducacion.href = "educacion.html";
+    botonEducacion.style.pointerEvents = "auto";
+    botonEducacion.style.opacity = "1";
+
+} else {
+
+    estadoEducacion.textContent = "🟢 Completado";
+    estadoEducacion.style.color = "#16a34a";
+
+    botonEducacion.textContent = "🏆 Ver certificado";
+    const estudiantes =
+    JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+const estudiante =
+    estudiantes.find(function(e) {
+
+        return e.nombre.toLowerCase() ===
+            usuario.nombre.toLowerCase()
+            &&
+            e.curso.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") ===
+    "educacion";
+
+    });
+
+if (
+    estudiante &&
+    estudiante.certificado &&
+    estudiante.certificado !== "Sin certificado"
+) {
+
+    botonEducacion.href =
+        "certificado.html?certificado=" +
+        encodeURIComponent(estudiante.certificado);
+
+} else {
+
+    botonEducacion.href =
+        "certificado.html";
+
+}
+    botonEducacion.style.pointerEvents = "auto";
+    botonEducacion.style.opacity = "1";
+
+}
+// Mostrar progreso de Técnicas de estudio
+
+const totalTecnicas = 4;
+let completadasTecnicas = 0;
+
+if (usuario && usuario.progreso && usuario.progreso.tecnicas) {
+
+    for (let i = 1; i <= totalTecnicas; i++) {
+
+        if (usuario.progreso.tecnicas["leccion" + i]) {
+            completadasTecnicas++;
+        }
+
+    }
+
+}
+
+
+const porcentajeTecnicas = Math.round(
+    (completadasTecnicas / totalTecnicas) * 100
+);
+
+
+document.getElementById("dashTecnicas").textContent =
+    porcentajeTecnicas + "%";
+
+
+document.getElementById("barraDashboardTecnicas").value =
+    porcentajeTecnicas;
+
+
+const estadoTecnicas =
+document.getElementById("estadoTecnicas");
+
+const botonTecnicas =
+document.getElementById("botonTecnicas");
+
+
+if (localStorage.getItem("estadoEstudio") === "inactivo") {
+
+    estadoTecnicas.textContent = "🔴 Curso temporalmente inactivo";
+    estadoTecnicas.style.color = "#dc2626";
+
+    botonTecnicas.textContent = "🚫 Curso no disponible";
+    botonTecnicas.removeAttribute("href");
+    botonTecnicas.style.pointerEvents = "none";
+    botonTecnicas.style.opacity = "0.6";
+
+} else if (porcentajeTecnicas === 0) {
+
+    estadoTecnicas.textContent = "⚪ Sin iniciar";
+    estadoTecnicas.style.color = "#6b7280";
+
+    botonTecnicas.textContent = "🚀 Iniciar curso";
+    botonTecnicas.href = "estudio.html";
+    botonTecnicas.style.pointerEvents = "auto";
+    botonTecnicas.style.opacity = "1";
+
+} else if (porcentajeTecnicas < 100) {
+
+    estadoTecnicas.textContent = "🟡 En progreso";
+    estadoTecnicas.style.color = "#f59e0b";
+
+    botonTecnicas.textContent = "▶ Continuar curso";
+    botonTecnicas.href = "estudio.html";
+    botonTecnicas.style.pointerEvents = "auto";
+    botonTecnicas.style.opacity = "1";
+
+} else {
+
+    estadoTecnicas.textContent = "🟢 Completado";
+    estadoTecnicas.style.color = "#16a34a";
+
+    botonTecnicas.textContent = "🏆 Ver certificado";
+
+    const estudiantes =
+        JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+    const estudiante =
+        estudiantes.find(function(e) {
+
+            return e.nombre.toLowerCase() ===
+                usuario.nombre.toLowerCase()
+                &&
+                e.curso.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") ===
+"tecnicas de estudio";
+
+        });
+
+    if (
+        estudiante &&
+        estudiante.certificado &&
+        estudiante.certificado !== "Sin certificado"
+    ) {
+
+        botonTecnicas.href =
+            "certificado.html?certificado=" +
+            encodeURIComponent(estudiante.certificado);
+
+    } else {
+
+        botonTecnicas.href =
+            "certificado.html";
+
+    }
+
+    botonTecnicas.style.pointerEvents = "auto";
+    botonTecnicas.style.opacity = "1";
+
+}
+
+// ==============================
+// Progreso general del Dashboard
+// ==============================
+
+console.log("Psicología:", porcentaje);
+console.log("Educación:", porcentajeEducacion);
+console.log("Técnicas:", porcentajeTecnicas);
+const promedioGeneral = Math.round(
+    (porcentaje + porcentajeEducacion + porcentajeTecnicas) / 3
+);
+
+document.getElementById("resumenProgreso").textContent =
+    promedioGeneral + "%";
+
+    console.log("PROMEDIO GENERAL:", promedioGeneral);
+
+    // ==============================
+// Certificados del estudiante
+// ==============================
+
+let certificados = 0;
+
+// ===============================
+// CONTAR CERTIFICADOS
+// ===============================
+
+if (usuario.certificados) {
+
+    for (let curso in usuario.certificados) {
+
+        if (usuario.certificados[curso]) {
+
+            certificados++;
+
+        }
+
+    }
+
+}
+
+document.getElementById("resumenCertificados").textContent =
+    certificados;
+
+
+</script>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

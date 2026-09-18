@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lección 2 - Historia de la Psicología</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>📘 Psicología</h1>
+<p>Lección 2: Historia de la Psicología</p>
+
+<nav>
+<a href="../psicologia.html">Volver a Psicología</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<h2>Historia de la Psicología</h2>
+
+<p>
+La Psicología tiene sus raíces en la filosofía,
+donde pensadores como Platón y Aristóteles
+reflexionaron sobre la mente y el comportamiento humano.
+</p>
+
+<p>
+Con el paso del tiempo, la Psicología se convirtió
+en una ciencia independiente. En 1879, Wilhelm Wundt
+creó el primer laboratorio de Psicología experimental.
+</p>
+
+
+<h2>Personajes importantes</h2>
+
+<ul>
+<li>🧠 Wilhelm Wundt - Padre de la Psicología experimental</li>
+<li>🧠 Sigmund Freud - Teoría del psicoanálisis</li>
+<li>🧠 Jean Piaget - Desarrollo cognitivo</li>
+<li>🧠 B. F. Skinner - Conductismo</li>
+</ul>
+
+
+<h2>Pregunta de práctica</h2>
+
+<p>
+¿En qué año se creó el primer laboratorio de Psicología experimental?
+</p>
+
+<button onclick="respuestaCorrecta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+<button
+id="btnCompletar"
+class="boton"
+data-curso="psicologia"
+data-leccion="1">
+✅ Marcar lección como completada
+</button>
+
+<script>
+
+function respuestaCorrecta(){
+
+document.getElementById("resultado").innerHTML =
+"✅ Correcto: El primer laboratorio de Psicología experimental fue creado en 1879 por Wilhelm Wundt.";
+
+}
+
+
+function completarLeccion(){
+
+let completadas =
+Number(localStorage.getItem("psicologiaCompletadas")) || 0;
+
+
+if(completadas < 8){
+
+completadas++;
+
+localStorage.setItem(
+"psicologiaCompletadas",
+completadas
+);
+
+alert("🎉 Lección completada correctamente");
+
+}
+
+}
+
+</script>
+
+<script src="../js/app.js"></script>
+
+</main>
+
+</body>
+
+</html>

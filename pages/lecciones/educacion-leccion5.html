@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Lección 5 - Cómo estudiar sin olvidar</title>
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>🧠 Educación</h1>
+<p>Lección 5: Cómo estudiar sin olvidar</p>
+
+<nav>
+<a href="../educacion.html">Volver a Educación</a>
+</nav>
+
+</header>
+
+<main>
+
+<h2>¿Por qué olvidamos lo que estudiamos?</h2>
+
+<p>
+Muchas veces los estudiantes leen mucha información,
+pero después no recuerdan lo aprendido. Esto sucede porque
+solo leer no es suficiente; el cerebro necesita comprender,
+practicar y repasar.
+</p>
+
+<h2>Técnica 1: Estudia por partes pequeñas</h2>
+
+<p>
+Estudia durante 25 minutos y descansa 5 minutos.
+Esto ayuda a mantener la concentración y evitar el cansancio.
+</p>
+
+<h2>Técnica 2: Explica lo aprendido</h2>
+
+<p>
+Cuando explicas un tema con tus propias palabras,
+tu cerebro fortalece la memoria.
+</p>
+
+<h2>Técnica 3: Repasa varias veces</h2>
+
+<p>
+Revisa la información después de un día,
+una semana y un mes para recordarla mejor.
+</p>
+
+<h2>Actividad práctica</h2>
+
+<p>
+Elige un tema de tu escuela, estúdialo 25 minutos
+y después explica lo que aprendiste.
+</p>
+
+<h2>Pregunta de práctica</h2>
+
+<p>
+¿Cuál es una mejor forma de aprender?
+</p>
+
+<button onclick="respuestaCorrecta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+<button
+id="btnCompletar"
+class="boton"
+type="button">
+✅ Marcar lección como completada
+</button>
+
+<script>
+
+function respuestaCorrecta() {
+
+    document.getElementById("resultado").innerHTML =
+        "✅ Correcto: Comprender, explicar y practicar ayuda a recordar mejor.";
+}
+
+
+document.getElementById("btnCompletar").addEventListener(
+    "click",
+    function () {
+
+        const usuarioActivo =
+            JSON.parse(localStorage.getItem("usuarioActivo"));
+
+        if (!usuarioActivo) {
+
+            alert("⚠️ No hay usuario activo.");
+            return;
+        }
+
+        if (!usuarioActivo.progreso) {
+            usuarioActivo.progreso = {};
+        }
+
+        if (!usuarioActivo.progreso.educacion) {
+            usuarioActivo.progreso.educacion = {};
+        }
+
+        usuarioActivo.progreso.educacion.leccion5 = true;
+
+        localStorage.setItem(
+            "usuarioActivo",
+            JSON.stringify(usuarioActivo)
+        );
+
+        alert("🎉 Lección 5 completada correctamente");
+
+        this.textContent =
+            "✅ Lección completada";
+
+        this.disabled = true;
+    }
+);
+
+</script>

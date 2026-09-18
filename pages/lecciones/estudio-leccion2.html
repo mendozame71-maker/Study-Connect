@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Lección 2 - Cómo tomar mejores apuntes</title>
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>📝 Técnicas de Estudio</h1>
+<p>Lección 2: Cómo tomar mejores apuntes</p>
+
+<nav>
+<a href="../estudio.html">Volver a Estudio</a>
+</nav>
+
+</header>
+
+<main>
+
+<h2>🎯 Objetivo</h2>
+
+<p>
+Aprender a tomar apuntes claros y organizados para facilitar el estudio y recordar mejor la información.
+</p>
+
+<h2>¿Qué son los apuntes?</h2>
+
+<p>
+Los apuntes son notas personales que escribimos mientras estudiamos o escuchamos una explicación. Nos ayudan a recordar las ideas más importantes y a repasar con mayor facilidad.
+</p>
+
+<h2>Consejos para tomar mejores apuntes</h2>
+
+<ul>
+
+<li>🖊️ Escribe solo las ideas principales.</li>
+
+<li>📌 Utiliza títulos y subtítulos.</li>
+
+<li>🎨 Resalta palabras importantes con colores.</li>
+
+<li>📖 Escribe ejemplos para comprender mejor.</li>
+
+<li>📅 Revisa tus apuntes el mismo día.</li>
+
+</ul>
+
+<h2>Ejemplo</h2>
+
+<p>
+
+Tema: El sistema solar
+
+Idea principal:
+El sistema solar está formado por el Sol y los planetas que giran a su alrededor.
+
+Palabras clave:
+Sol, planetas, órbitas, gravedad.
+
+</p>
+
+<h2>Actividad</h2>
+
+<p>
+Escoge un tema de tu escuela y escribe un resumen utilizando títulos, palabras clave y ejemplos.
+</p>
+
+<h2>Pregunta de evaluación</h2>
+
+<p>
+¿Qué debes escribir primero en unos buenos apuntes?
+</p>
+
+<button onclick="mostrarRespuesta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+<button
+id="btnCompletar"
+class="boton"
+data-curso="tecnicas"
+data-leccion="2"
+onclick="completarLeccion()">
+✅ Marcar lección como completada
+</button>
+
+<script>
+
+function mostrarRespuesta(){
+
+document.getElementById("resultado").innerHTML =
+"✅ Correcto: Primero debes identificar y escribir las ideas principales del tema.";
+
+}
+
+
+function completarLeccion(){
+
+let completadas =
+Number(localStorage.getItem("tecnicasCompletadas")) || 0;
+
+
+if(completadas < 4){
+
+completadas++;
+
+localStorage.setItem(
+"tecnicasCompletadas",
+completadas
+);
+
+alert("🎉 Lección completada correctamente");
+
+}
+
+}
+
+
+</script>
+
+<script src="../js/app.js"></script>
+
+</main>
+
+</body>
+
+</html>

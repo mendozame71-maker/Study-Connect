@@ -1,0 +1,59 @@
+/* ==============================
+   ANCHO DEL PANEL DE ADMINISTRACIÓN
+   ============================== */
+
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+main > .tarjeta {
+    padding: 30px;
+    border-radius: 15px;
+}
+
+/* ==============================
+   TARJETAS DE ESTADÍSTICAS
+   ============================== */
+
+main > .tarjeta p {
+    margin: 12px 0;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+main > .tarjeta p span {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* ==============================
+   NÚMEROS DE ESTADÍSTICAS
+   ============================== */
+
+main > .tarjeta p span {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+/* ==============================
+   BOTONES DEL PANEL ADMIN
+   ============================== */
+
+main > .tarjeta > .boton {
+    display: inline-block;
+    min-width: 230px;
+    text-align: center;
+    margin: 8px 5px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+main > .tarjeta > .boton:hover {
+    transform: translateY(-2px);
+}
+

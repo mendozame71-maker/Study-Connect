@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>    
+    <meta charset="UTF-8">
+    <title>Educacion - Study Connect</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="educacion">
+
+<header>
+  <h1>🧠 Educacion</h1>
+    <p>Aprende los fundamentos de la enseñanza</p>
+  
+  <nav>
+        <a href="../index.html">Inicio</a>
+    </nav>
+</header>
+
+<main>
+
+    <h2>Cursos de Educación</h2>
+
+    <div class="tarjeta">
+
+<h3>📊 Tu progreso</h3>
+
+<p>
+Progreso:
+<span id="porcentajeEducacion">0%</span>
+</p>
+
+<progress
+id="barraEducacion"
+value="0"
+max="100">
+</progress>
+
+</div>
+
+    <div class="tarjeta">
+
+<h3>📚 ¿Qué es la Educación?</h3>
+
+<p>
+Lección 1: Conceptos básicos de la educación
+</p>
+
+<a href="lecciones/educacion-leccion1.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>🧩 Constructivismo</h3>
+
+<p>
+Lección 2: Piaget y Vygotsky
+</p>
+
+<a href="lecciones/educacion-leccion2.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>📊 Evaluación educativa</h3>
+
+<p>
+Lección 3: Evaluación y Taxonomía de Bloom
+</p>
+
+<a href="lecciones/educacion-leccion3.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>👨‍🏫 Métodos de enseñanza</h3>
+
+<p>
+Lección 4: Estrategias para enseñar mejor
+</p>
+
+<a href="lecciones/educacion-leccion4.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+<div class="tarjeta">
+
+<h3>🧠 Cómo estudiar sin olvidar</h3>
+
+<p>
+Lección 5: Técnicas de estudio, memoria y aprendizaje efectivo
+</p>
+
+<a href="lecciones/educacion-leccion5.html" class="boton">
+Comenzar lección
+</a>
+
+</div>
+
+</main>
+
+<script>
+
+const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+const barra = document.getElementById("barraEducacion");
+const texto = document.getElementById("porcentajeEducacion");
+
+if (usuario && usuario.progreso && usuario.progreso.educacion) {
+
+    const totalLecciones = 5;
+    let completadas = 0;
+
+    for (let i = 1; i <= totalLecciones; i++) {
+
+        if (usuario.progreso.educacion["leccion" + i]) {
+            completadas++;
+        }
+
+    }
+
+    const porcentaje = Math.round(
+        (completadas / totalLecciones) * 100
+    );
+
+    barra.value = porcentaje;
+    texto.textContent = porcentaje + "%";
+
+}
+
+</script>
+
+</body>
+</html>

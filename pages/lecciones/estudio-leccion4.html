@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Lección 4 - Cómo estudiar sin olvidar</title>
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>🎯 Técnicas de Estudio</h1>
+<p>Lección 4: Cómo estudiar sin olvidar</p>
+
+<nav>
+<a href="../estudio.html">Volver a Estudio</a>
+</nav>
+
+</header>
+
+<main>
+
+<h2>🎯 Objetivo</h2>
+
+<p>
+Aprender estrategias que permitan comprender, recordar y aplicar los conocimientos durante más tiempo.
+</p>
+
+<h2>¿Por qué olvidamos lo que estudiamos?</h2>
+
+<p>
+Olvidamos cuando solo leemos o memorizamos sin comprender. El cerebro recuerda mejor cuando entendemos la información, la relacionamos con conocimientos previos y la practicamos varias veces.
+</p>
+
+<h2>5 técnicas para estudiar sin olvidar</h2>
+
+<h3>1. Comprende antes de memorizar</h3>
+<p>
+Lee el tema con calma y asegúrate de entenderlo antes de intentar recordarlo.
+</p>
+
+<h3>2. Estudia en sesiones cortas</h3>
+<p>
+Dedica 25 minutos de estudio y descansa 5 minutos antes de continuar.
+</p>
+
+<h3>3. Explica con tus propias palabras</h3>
+<p>
+Imagina que eres el profesor y explica el tema a otra persona o incluso a ti mismo.
+</p>
+
+<h3>4. Haz repasos programados</h3>
+<p>
+Repasa el tema el mismo día, al día siguiente, una semana después y un mes después.
+</p>
+
+<h3>5. Practica con preguntas</h3>
+<p>
+Haz ejercicios y responde preguntas sin mirar tus apuntes para comprobar cuánto recuerdas.
+</p>
+
+<h2>Actividad práctica</h2>
+
+<p>
+Elige un tema de tu escuela y aplica las cinco técnicas. Al terminar, escribe un resumen con tus propias palabras.
+</p>
+
+<h2>Evaluación</h2>
+
+<p><strong>¿Cuál de estas acciones ayuda más a recordar lo aprendido?</strong></p>
+
+<ul>
+<li>A) Leer el tema diez veces sin practicar.</li>
+<li>B) Comprender, explicar, repasar y practicar.</li>
+<li>C) Estudiar solo una noche antes del examen.</li>
+</ul>
+
+<button onclick="mostrarRespuesta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+<button
+id="btnCompletar"
+class="boton"
+data-curso="tecnicas"
+data-leccion="4"
+onclick="completarLeccion()">
+✅ Marcar lección como completada
+</button>
+<script>
+
+
+function mostrarRespuesta(){
+
+document.getElementById("resultado").innerHTML =
+"✅ Correcto: La respuesta es la opción B. Comprender, explicar, repasar y practicar fortalece la memoria y el aprendizaje.";
+
+}
+
+
+function completarLeccion(){
+
+let completadas =
+Number(localStorage.getItem("tecnicasCompletadas")) || 0;
+
+
+if(completadas < 4){
+
+completadas++;
+
+localStorage.setItem(
+"tecnicasCompletadas",
+completadas
+);
+
+alert("🎉 Lección completada correctamente");
+
+}
+
+}
+
+</script>
+
+<script src="../js/app.js"></script>
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Verificar Certificado - Study-Connect</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Verificar Certificado</h1>
+
+<p>Study-Connect</p>
+
+</header>
+
+<main>
+
+<div class="tarjeta">
+
+<h2>Verificación de Certificados</h2>
+
+<p>Escribe el número del certificado.</p>
+
+<input type="text" id="numeroCertificado" placeholder="Ejemplo: SC-2026-PSI-293658">
+
+<button onclick="verificarCertificado()">
+Verificar certificado
+</button>
+
+<div id="resultado"></div>
+
+</div>
+
+</main>
+
+<script src="../../js/app.js"></script>
+
+<script>
+
+function verificarCertificado() {
+
+    const numero = document.getElementById("numeroCertificado").value.trim();
+
+    const resultado = document.getElementById("resultado");
+
+    if (!numero) {
+
+        resultado.innerHTML = "<p>Escribe un número de certificado.</p>";
+
+        return;
+
+    }
+
+    const estudiantes = JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+    let certificadoEncontrado = null;
+
+    for (const estudiante of estudiantes) {
+
+        if (estudiante.certificado === numero) {
+
+            certificadoEncontrado = estudiante;
+
+            break;
+
+        }
+
+    }
+
+    if (!certificadoEncontrado) {
+
+        resultado.innerHTML = `
+            <h3>❌ Certificado no encontrado</h3>
+            <p>El número de certificado no existe en Study-Connect.</p>
+        `;
+
+        return;
+
+    }
+
+    resultado.innerHTML = `
+        <h3>✅ Certificado válido</h3>
+
+        <p><strong>Alumno:</strong> ${certificadoEncontrado.nombre}</p>
+
+        <p><strong>Curso:</strong> ${certificadoEncontrado.curso}</p>
+
+        <p><strong>Progreso:</strong> ${certificadoEncontrado.progreso || "100%"}</p>
+
+        <p><strong>Estado:</strong> ${certificadoEncontrado.estado || "Aprobado"}</p>
+
+        <p><strong>Número de certificado:</strong> ${certificadoEncontrado.certificado}</p>
+    `;
+
+}
+
+</script>
+
+</body>
+
+</html>

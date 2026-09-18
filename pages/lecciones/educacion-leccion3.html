@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lección 3 - Evaluación Educativa</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>📚 Educación</h1>
+<p>Lección 3: Evaluación educativa y Taxonomía de Bloom</p>
+
+<nav>
+<a href="../educacion.html">Volver a Educación</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<h2>¿Qué es la evaluación educativa?</h2>
+
+<p>
+La evaluación educativa es un proceso que permite conocer
+los avances, dificultades y necesidades de los estudiantes
+para mejorar el aprendizaje.
+</p>
+
+
+<h2>Tipos de evaluación</h2>
+
+<ul>
+
+<li>
+📝 <strong>Evaluación diagnóstica</strong><br>
+Se realiza al inicio para conocer los conocimientos
+previos del estudiante.
+</li>
+
+<br>
+
+<li>
+📚 <strong>Evaluación formativa</strong><br>
+Se realiza durante el aprendizaje para mejorar
+el proceso educativo.
+</li>
+
+<br>
+
+<li>
+🎯 <strong>Evaluación sumativa</strong><br>
+Se realiza al final para valorar los resultados
+obtenidos.
+</li>
+
+</ul>
+
+
+<h2>📊 Taxonomía de Bloom</h2>
+
+<p>
+La Taxonomía de Bloom organiza los niveles de aprendizaje
+y ayuda a crear objetivos educativos.
+</p>
+
+<ul>
+
+<li>🧠 Recordar: reconocer información.</li>
+
+<li>💡 Comprender: explicar ideas.</li>
+
+<li>🛠 Aplicar: usar conocimientos en situaciones reales.</li>
+
+<li>🔎 Analizar: identificar partes y relaciones.</li>
+
+<li>⚖ Evaluar: emitir juicios con argumentos.</li>
+
+<li>🎨 Crear: producir nuevas ideas o soluciones.</li>
+
+</ul>
+
+
+<h2>Pregunta de práctica</h2>
+
+<p>
+¿Qué tipo de evaluación se realiza durante el proceso
+de aprendizaje para mejorar?</p>
+
+<button onclick="respuestaCorrecta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+<button
+id="btnCompletar"
+class="boton"
+type="button">
+✅ Marcar lección como completada
+</button>
+
+
+<script>
+
+function respuestaCorrecta() {
+
+    document.getElementById("resultado").innerHTML =
+        "✅ Correcto: La evaluación formativa se realiza durante el aprendizaje para ayudar a mejorar.";
+}
+
+
+document.getElementById("btnCompletar").addEventListener(
+    "click",
+    function () {
+
+        const usuarioActivo =
+            JSON.parse(localStorage.getItem("usuarioActivo"));
+
+        if (!usuarioActivo) {
+
+            alert("⚠️ No hay usuario activo.");
+            return;
+        }
+
+        if (!usuarioActivo.progreso) {
+            usuarioActivo.progreso = {};
+        }
+
+        if (!usuarioActivo.progreso.educacion) {
+            usuarioActivo.progreso.educacion = {};
+        }
+
+        usuarioActivo.progreso.educacion.leccion3 = true;
+
+        localStorage.setItem(
+            "usuarioActivo",
+            JSON.stringify(usuarioActivo)
+        );
+
+        alert("🎉 Lección 3 completada correctamente");
+
+        this.textContent =
+            "✅ Lección completada";
+
+        this.disabled = true;
+    }
+);
+
+</script>
+<script src="../js/progreso.js"></script>
+
+</main>
+
+</body>
+
+</html>

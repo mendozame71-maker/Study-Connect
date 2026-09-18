@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lección 1 - ¿Qué es la Educación?</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>📚 Educación</h1>
+<p>Lección 1: ¿Qué es la Educación?</p>
+
+<nav>
+<a href="../educacion.html">Volver a Educación</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<h2>¿Qué es la Educación?</h2>
+
+<p>
+La educación es un proceso mediante el cual las personas
+adquieren conocimientos, habilidades, valores y formas
+de relacionarse con la sociedad.
+</p>
+
+
+<h2>Objetivos de la educación</h2>
+
+<ul>
+
+<li>📖 Desarrollar conocimientos y habilidades.</li>
+
+<li>🤝 Formar personas responsables y respetuosas.</li>
+
+<li>🌎 Preparar a los ciudadanos para participar en la sociedad.</li>
+
+<li>🧠 Fomentar el pensamiento crítico y la creatividad.</li>
+
+</ul>
+
+
+<h2>El papel del docente</h2>
+
+<p>
+El docente guía, orienta y crea ambientes de aprendizaje
+para ayudar a los estudiantes a desarrollar su potencial.
+</p>
+
+
+<h2>El papel del estudiante</h2>
+
+<p>
+El estudiante participa activamente, aprende,
+investiga y construye nuevos conocimientos.
+</p>
+
+
+<h2>Pregunta de práctica</h2>
+
+<p>
+¿Qué busca desarrollar principalmente la educación?
+</p>
+
+<button onclick="respuestaCorrecta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+
+<button
+    id="btnCompletar"
+    class="boton"
+    data-curso="educacion"
+    data-leccion="1">
+    ✅ Marcar lección como completada
+</button>
+
+<script>
+
+function respuestaCorrecta() {
+
+    document.getElementById("resultado").innerHTML =
+        "✅ Correcto: La educación busca desarrollar conocimientos, habilidades, valores y capacidades en las personas.";
+}
+
+
+document.getElementById("btnCompletar").addEventListener(
+    "click",
+    function () {
+
+        const usuarioActivo =
+            JSON.parse(localStorage.getItem("usuarioActivo"));
+
+        if (!usuarioActivo) {
+
+            alert("⚠️ No hay usuario activo.");
+            return;
+        }
+
+        if (!usuarioActivo.progreso) {
+            usuarioActivo.progreso = {};
+        }
+
+        if (!usuarioActivo.progreso.educacion) {
+            usuarioActivo.progreso.educacion = {};
+        }
+
+        usuarioActivo.progreso.educacion.leccion1 = true;
+
+        localStorage.setItem(
+            "usuarioActivo",
+            JSON.stringify(usuarioActivo)
+        );
+
+        alert("🎉 Lección 1 completada correctamente");
+
+        this.textContent =
+            "✅ Lección completada";
+
+        this.disabled = true;
+    }
+);
+
+</script>
+
+<script src="../js/progreso.js"></script>
+</main>
+
+</body>
+
+</html>

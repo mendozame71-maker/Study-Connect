@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plataforma - Study-Connect</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .contenedor {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            box-sizing: border-box;
+        }
+
+        button,
+        .boton {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>🏫 Plataforma</h1>
+
+        <p>
+            Aquí podrás configurar los datos generales
+            de Study-Connect.
+        </p>
+
+        <label for="nombrePlataforma">
+            Nombre de la plataforma
+        </label>
+
+        <input
+            type="text"
+            id="nombrePlataforma"
+            placeholder="Escribe el nombre">
+
+        <label for="descripcionPlataforma">
+            Descripción de la plataforma
+        </label>
+
+        <input
+            type="text"
+            id="descripcionPlataforma"
+            placeholder="Escribe una descripción">
+
+        <button id="guardarPlataforma">
+            💾 Guardar cambios
+        </button>
+
+        <br>
+
+        <a href="configuracion.html" class="boton">
+            ← Volver a Configuración
+        </a>
+
+    </div>
+
+  
+
+    <script>
+
+document.getElementById("guardarPlataforma").onclick = function() {
+
+    const nombre = document.getElementById("nombrePlataforma").value;
+    const descripcion = document.getElementById("descripcionPlataforma").value;
+
+    localStorage.setItem("nombrePlataforma", nombre);
+    localStorage.setItem("descripcionPlataforma", descripcion);
+
+    alert("Datos de la plataforma guardados correctamente.");
+
+};
+window.onload = function() {
+
+    document.getElementById("nombrePlataforma").value =
+        localStorage.getItem("nombrePlataforma") || "";
+
+    document.getElementById("descripcionPlataforma").value =
+        localStorage.getItem("descripcionPlataforma") || "";
+
+};
+
+</script>
+
+</body>
+
+</html>

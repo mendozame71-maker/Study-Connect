@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Copias de seguridad - Study-Connect</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .contenedor {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f2f5;
+            border-radius: 8px;
+        }
+
+        button,
+        .boton {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>💾 Copias de seguridad</h1>
+
+        <p>
+            Aquí podrás administrar las copias de seguridad
+            de Study-Connect.
+        </p>
+
+        <div class="info">
+
+            <strong>🛡️ Importante</strong>
+
+            <p>
+                Las copias de seguridad permiten proteger
+                el trabajo realizado en la plataforma.
+            </p>
+
+        </div>
+
+<button id="crearCopia">
+    💾 Crear copia de seguridad
+</button>
+
+<button id="descargarCopia">
+    📥 Descargar copia de seguridad
+</button>
+
+<p id="estadoCopia">
+    No hay ninguna copia de seguridad.
+</p>
+<input type="file" id="archivoCopia" accept=".json">
+
+<button id="restaurarCopia">
+    🔄 Restaurar copia de seguridad
+</button>
+
+        <br>
+
+        <a href="configuracion.html" class="boton">
+            ← Volver a Configuración
+        </a>
+
+    </div>
+
+    <script>
+
+document.getElementById("crearCopia").onclick = function() {
+
+    const datos = {};
+
+    for (let i = 0; i < localStorage.length; i++) {
+
+        const clave = localStorage.key(i);
+
+        datos[clave] =
+            localStorage.getItem(clave);
+    }
+
+    const copia =
+        JSON.stringify(datos);
+
+    localStorage.setItem(
+        "copiaSeguridadStudyConnect",
+        copia
+    );
+
+    alert(
+        "Copia de seguridad creada correctamente."
+    );
+
+};
+
+document.getElementById("descargarCopia").onclick = function() {
+
+    const copia =
+        localStorage.getItem("copiaSeguridadStudyConnect");
+
+    if (!copia) {
+
+        alert("Primero debes crear una copia de seguridad.");
+
+        return;
+    }
+
+    const archivo =
+        new Blob(
+            [copia],
+            { type: "application/json" }
+        );
+
+    const enlace =
+        document.createElement("a");
+
+    enlace.href =
+        URL.createObjectURL(archivo);
+
+    enlace.download =
+        "Study-Connect-Backup.json";
+
+    enlace.click();
+
+    URL.revokeObjectURL(enlace.href);
+
+};
+
+document.getElementById("restaurarCopia").onclick = function() {
+
+    const archivo =
+        document.getElementById("archivoCopia").files[0];
+
+    if (!archivo) {
+
+        alert("Primero selecciona una copia de seguridad.");
+
+        return;
+    }
+
+    const confirmar =
+        confirm(
+            "⚠️ ¿Estás seguro de restaurar esta copia de seguridad?\n\nLos datos actuales serán reemplazados."
+        );
+
+    if (!confirmar) {
+
+        return;
+    }
+
+    const lector =
+        new FileReader();
+
+    lector.onload = function(evento) {
+
+        const copia =
+            JSON.parse(evento.target.result);
+
+       localStorage.clear();
+
+for (const clave in copia) {
+
+    localStorage.setItem(
+        clave,
+        copia[clave]
+    );
+   }
+
+   localStorage.setItem(
+    "copiaSeguridadStudyConnect",
+    JSON.stringify(copia)
+);
+
+        alert(
+            "✅ Copia de seguridad restaurada correctamente."
+        );
+
+        location.reload();
+
+    };
+
+    lector.readAsText(archivo);
+
+};
+
+const estadoCopia =
+    document.getElementById("estadoCopia");
+
+const copiaGuardada =
+    localStorage.getItem("copiaSeguridadStudyConnect");
+
+if (copiaGuardada) {
+
+    estadoCopia.innerHTML =
+        "✅ Hay una copia de seguridad guardada.";
+
+}
+</script>
+
+</body>
+
+</html>

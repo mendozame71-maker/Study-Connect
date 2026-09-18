@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Examen Final - Psicología</title>
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>🧠 Examen Final de Psicología</h1>
+<p>Responde las preguntas y demuestra tus conocimientos.</p>
+
+<nav>
+<a href="../psicologia.html">Volver al curso</a>
+</nav>
+
+</header>
+
+<main>
+    <h2>Pregunta 1</h2>
+
+<p>¿Qué estudia la Psicología?</p>
+
+<label>
+<input type="radio" name="p1" value="a">
+Las plantas.
+</label><br>
+
+<label>
+<input type="radio" name="p1" value="correcto">
+El comportamiento, las emociones y los pensamientos.
+</label><br>
+
+
+<label>
+<input type="radio" name="p1" value="c">
+Los planetas.
+</label><br>
+
+<h2>Pregunta 2</h2>
+
+<p>¿Quién fundó el primer laboratorio de Psicología experimental?</p>
+
+<label>
+<input type="radio" name="p2" value="a">
+Jean Piaget
+</label><br>
+
+<label>
+<input type="radio" name="p2" value="correcto">
+Wilhelm Wundt
+</label><br>
+
+<label>
+<input type="radio" name="p2" value="c">
+Sigmund Freud
+</label><br><br>
+
+<button id="btnEnviarExamen" class="boton">
+✅ Calificar examen
+</button>
+
+<p id="resultado"></p>
+
+</main>
+
+<script>
+   document.getElementById("btnEnviarExamen").onclick = function () {
+
+    let puntos = 0;
+
+    let p1 = document.querySelector('input[name="p1"]:checked');
+    let p2 = document.querySelector('input[name="p2"]:checked');
+
+    if (p1 && p1.value === "correcto") puntos++;
+    if (p2 && p2.value === "correcto") puntos++;
+
+    let resultado = document.getElementById("resultado");
+
+    resultado.innerHTML = "Resultado: " + puntos + " de 2 puntos";
+
+    if (puntos !== 2) {
+
+        resultado.innerHTML += "<br>❌ Examen no aprobado.";
+        return;
+
+    }
+
+    resultado.innerHTML += "<br>Calificación: 100%";
+    resultado.innerHTML += "<br>✅ Examen aprobado";
+
+    localStorage.setItem("psicologiaExamen", "aprobado");
+
+    let usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+    if (!usuario) {
+
+        alert("No hay un usuario activo.");
+        return;
+
+    }
+
+    let estudiantes = JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+    let estudiante = estudiantes.find(e => e.nombre === usuario.nombre);
+
+    if (!estudiante) {
+
+        estudiante = {
+            nombre: usuario.nombre,
+            curso: "Psicología",
+            progreso: "0%",
+            examen: "Pendiente",
+            certificado: null
+        };
+
+        estudiantes.push(estudiante);
+
+    }
+
+    estudiante.curso = "Psicología";
+    estudiante.progreso = "100%";
+    estudiante.examen = "Aprobado";
+
+    // Actualizar también usuario activo
+usuario.curso = "Psicología";
+usuario.estado = "Aprobado";
+usuario.progreso = "100%";
+
+localStorage.setItem(
+    "usuarioActivo",
+    JSON.stringify(usuario)
+);
+
+    // Generar certificado solo si todavía no tiene uno
+    if (!estudiante.certificado) {
+
+        let ultimo = Number(localStorage.getItem("ultimoCertificado")) || 0;
+
+        ultimo++;
+
+        localStorage.setItem("ultimoCertificado", ultimo);
+
+        estudiante.certificado =
+            "SC-2026-" + String(ultimo).padStart(6, "0");
+
+    }
+
+    localStorage.setItem(
+        "estudiantes",
+        JSON.stringify(estudiantes)
+    );
+
+    alert("🎉 Examen aprobado. Certificado generado.");
+
+};
+</script>
+
+<script src="../js/examen.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lección 4 - Métodos de Enseñanza</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>📚 Educación</h1>
+<p>Lección 4: Métodos de enseñanza</p>
+
+<nav>
+<a href="../educacion.html">Volver a Educación</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<h2>¿Qué son los métodos de enseñanza?</h2>
+
+<p>
+Los métodos de enseñanza son las estrategias y formas
+que utiliza el docente para facilitar el aprendizaje
+de los estudiantes.
+</p>
+
+
+<h2>Principales métodos de enseñanza</h2>
+
+<ul>
+
+<li>
+📖 <strong>Método tradicional</strong><br>
+El docente explica los contenidos y el estudiante
+recibe la información.
+</li>
+
+<br>
+
+<li>
+🧩 <strong>Aprendizaje basado en problemas</strong><br>
+Los estudiantes aprenden buscando soluciones
+a situaciones reales.
+</li>
+
+<br>
+
+<li>
+👥 <strong>Aprendizaje colaborativo</strong><br>
+Los estudiantes trabajan en equipo para construir
+conocimientos juntos.
+</li>
+
+<br>
+
+<li>
+🎯 <strong>Aprendizaje activo</strong><br>
+El estudiante participa, practica y relaciona
+los conocimientos con su vida diaria.
+</li>
+
+</ul>
+
+
+<h2>El papel del docente</h2>
+
+<p>
+El docente actual es un guía que orienta,
+motiva y crea experiencias para que los estudiantes
+aprendan de manera significativa.
+</p>
+
+
+<h2>Pregunta de práctica</h2>
+
+<p>
+¿Qué método busca que los estudiantes trabajen juntos
+para construir conocimientos?
+</p>
+
+
+<button onclick="respuestaCorrecta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+<button
+id="btnCompletar"
+class="boton"
+type="button">
+✅ Marcar lección como completada
+</button>
+
+
+<script>
+
+function respuestaCorrecta() {
+
+    document.getElementById("resultado").innerHTML =
+        "✅ Correcto: El aprendizaje colaborativo busca que los estudiantes trabajen en equipo y aprendan juntos.";
+}
+
+
+document.getElementById("btnCompletar").addEventListener(
+    "click",
+    function () {
+
+        const usuarioActivo =
+            JSON.parse(localStorage.getItem("usuarioActivo"));
+
+        if (!usuarioActivo) {
+
+            alert("⚠️ No hay usuario activo.");
+            return;
+        }
+
+        if (!usuarioActivo.progreso) {
+            usuarioActivo.progreso = {};
+        }
+
+        if (!usuarioActivo.progreso.educacion) {
+            usuarioActivo.progreso.educacion = {};
+        }
+
+        usuarioActivo.progreso.educacion.leccion4 = true;
+
+        localStorage.setItem(
+            "usuarioActivo",
+            JSON.stringify(usuarioActivo)
+        );
+
+        alert("🎉 Lección 4 completada correctamente");
+
+        this.textContent =
+            "✅ Lección completada";
+
+        this.disabled = true;
+    }
+);
+
+</script>

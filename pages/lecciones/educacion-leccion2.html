@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lección 2 - Constructivismo</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>📚 Educación</h1>
+<p>Lección 2: Constructivismo, Piaget y Vygotsky</p>
+
+<nav>
+<a href="../educacion.html">Volver a Educación</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<h2>¿Qué es el Constructivismo?</h2>
+
+<p>
+El constructivismo es una teoría educativa que explica
+que los estudiantes construyen su propio conocimiento
+a través de sus experiencias, participación y reflexión.
+</p>
+
+
+<h2>🧠 Jean Piaget</h2>
+
+<p>
+Piaget explicó que los niños pasan por diferentes etapas
+de desarrollo cognitivo y que aprenden cuando interactúan
+con su entorno.
+</p>
+
+<ul>
+<li>👶 Etapa sensoriomotora</li>
+<li>🧒 Etapa preoperacional</li>
+<li>🧠 Etapa de operaciones concretas</li>
+<li>🎓 Etapa de operaciones formales</li>
+</ul>
+
+
+<h2>👥 Lev Vygotsky</h2>
+
+<p>
+Vygotsky destacó la importancia de la interacción social
+en el aprendizaje. Su concepto más conocido es la
+<strong>Zona de Desarrollo Próximo</strong>, donde el estudiante
+puede aprender con la ayuda de alguien más experto.
+</p>
+
+
+<h2>El papel del docente</h2>
+
+<p>
+El docente no solo transmite información; guía al estudiante,
+crea experiencias de aprendizaje y ayuda a construir nuevos conocimientos.
+</p>
+
+
+<h2>Pregunta de práctica</h2>
+
+<p>
+¿Qué teoría propone que el estudiante construye su propio conocimiento?
+</p>
+
+<button onclick="respuestaCorrecta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+<button
+id="btnCompletar"
+class="boton"
+onclick="completarLeccion()">
+✅ Marcar lección como completada
+</button>
+
+<script>
+
+function respuestaCorrecta(){
+
+document.getElementById("resultado").innerHTML =
+"✅ Correcto: El Constructivismo propone que el estudiante construye su conocimiento mediante experiencias e interacción.";
+
+}
+
+
+function completarLeccion() {
+
+    const usuarioActivo =
+        JSON.parse(localStorage.getItem("usuarioActivo"));
+
+    if (!usuarioActivo) {
+
+        alert("⚠️ No hay un usuario activo.");
+        return;
+    }
+
+    if (!usuarioActivo.progreso) {
+        usuarioActivo.progreso = {};
+    }
+
+    if (!usuarioActivo.progreso.educacion) {
+        usuarioActivo.progreso.educacion = {};
+    }
+
+    usuarioActivo.progreso.educacion.leccion2 = true;
+
+    localStorage.setItem(
+        "usuarioActivo",
+        JSON.stringify(usuarioActivo)
+    );
+
+    alert("🎉 Lección 2 completada correctamente");
+
+    const boton =
+        document.getElementById("btnCompletar");
+
+    if (boton) {
+
+        boton.textContent =
+            "✅ Lección completada";
+
+        boton.disabled = true;
+    }
+}
+
+</script>
+
+<script src="/js/progreso.js"></script>
+
+</main>
+
+</body>
+
+</html>

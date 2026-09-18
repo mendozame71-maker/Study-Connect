@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Certificados - Study Connect</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>🏆 Mis Certificados</h1>
+<p>Reconocimiento por tus cursos completados</p>
+
+<nav>
+<a href="dashboard.html">Panel</a>
+<a href="progreso.html">Mi progreso</a>
+</nav>
+
+</header>
+
+<main>
+
+<div class="tarjeta">
+
+<h2>📜 Certificados obtenidos</h2>
+
+<div id="certificados">
+
+</div>
+
+</div>
+
+</main>
+
+<script>
+
+window.onload = function () {
+
+    const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+   if (!usuario) {
+    window.location.href = "login.html";
+    return;
+}
+
+    const estudiantes = JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+    const alumnos = estudiantes.filter(
+    e => e.nombre.toLowerCase() === usuario.nombre.toLowerCase()
+    &&
+    e.certificado
+    &&
+    e.certificado !== "Sin certificado"
+);
+
+let contenido = "";
+
+if (alumnos.length > 0) {
+
+    alumnos.forEach(function(alumno) {
+
+        contenido += `
+        <div class="tarjeta">
+
+            <h2>🏆 ${alumno.curso}</h2>
+
+            <p><strong>Número:</strong> ${alumno.certificado}</p>
+
+            <a class="boton"
+               href="certificado.html?certificado=${alumno.certificado}">
+               👁️ Ver certificado
+            </a>
+
+        </div>
+        `;
+
+    });
+
+} else {
+
+    contenido = `
+    <div class="tarjeta">
+
+        <h2>📜 Mis Certificados</h2>
+
+        <p>Aún no tienes certificados disponibles.</p>
+
+    </div>
+    `;
+}
+
+    document.getElementById("certificados").innerHTML = contenido;
+
+};
+
+</script>
+

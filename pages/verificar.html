@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Verificar Certificado - Study-Connect</title>
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+<h1>🎓 Verificación de Certificados</h1>
+<p>Study-Connect</p>
+</header>
+
+<main class="contenedor">
+
+<div class="tarjeta">
+
+<h2>Verificación de Certificados</h2>
+
+<p>Escribe el número del certificado.</p>
+
+<input id="numeroCertificado" placeholder="Ejemplo: SC-2026-636519">
+
+<br><br>
+
+<button onclick="verificar()">Verificar certificado</button>
+
+<hr>
+
+<p id="resultado"></p>
+
+</div>
+
+</main>
+
+
+<script>
+
+
+function verificar(){
+
+    let numero = document.getElementById("numeroCertificado").value.trim();
+
+    // Buscar certificado individual
+    let certificado = JSON.parse(
+        localStorage.getItem("certificado_" + numero)
+    );
+
+    // Si no existe, buscar en estudiantes
+    if (!certificado) {
+
+        let estudiantes =
+            JSON.parse(localStorage.getItem("estudiantes")) || [];
+
+        let estudiante = estudiantes.find(function(e){
+            return e.certificado === numero;
+        });
+
+        if (estudiante) {
+
+            certificado = {
+                numero: estudiante.certificado,
+                nombre: estudiante.nombre,
+                curso: estudiante.curso,
+                estado: "Aprobado"
+            };
+
+        }
+
+    }
+
+    if(certificado){
+
+        document.getElementById("resultado").innerHTML = `
+
+        <h3>✅ Certificado válido</h3>
+
+        <p><strong>Alumno:</strong> ${certificado.nombre}</p>
+
+        <p><strong>Curso:</strong> ${certificado.curso}</p>
+
+        <p><strong>Estado:</strong> ${certificado.estado}</p>
+
+        ${certificado.fecha ? `<p><strong>Fecha:</strong> ${certificado.fecha}</p>` : ""}
+
+        <p><strong>Número:</strong> ${certificado.numero}</p>
+
+        <p><strong>Study-Connect</strong></p>
+
+        `;
+
+    }else{
+
+        document.getElementById("resultado").innerHTML = `
+
+        ❌ Certificado no encontrado
+
+        `;
+
+    }
+
+}
+</script>
+
+</body>
+
+</html>

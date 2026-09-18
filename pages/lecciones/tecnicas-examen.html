@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Examen Final de Técnicas de Estudio</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>🧠 Examen Final de Técnicas de Estudio</h1>
+
+    <p>
+        Responde las preguntas y demuestra tus conocimientos.
+    </p>
+
+    <nav>
+        <a href="tecnicas.html">⬅ Volver al curso</a>
+    </nav>
+
+</header>
+
+<main>
+
+<form id="formExamen">
+
+    <div class="tarjeta">
+
+        <h2>Pregunta 1</h2>
+
+        <p>¿Por qué es importante organizar el tiempo de estudio?</p>
+
+        <label>
+            <input type="radio" name="p1" value="incorrecto">
+            Para evitar estudiar.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p1" value="correcto">
+            Para aprovechar mejor el tiempo y cumplir con las actividades.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p1" value="incorrecto">
+            Para dejar todas las actividades para el último momento.
+        </label>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+        <h2>Pregunta 2</h2>
+
+        <p>¿Cuál es una buena técnica para tomar apuntes?</p>
+
+        <label>
+            <input type="radio" name="p2" value="correcto">
+            Escribir y organizar las ideas principales.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p2" value="incorrecto">
+            No escribir ninguna información.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p2" value="incorrecto">
+            Copiar todo sin comprenderlo.
+        </label>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+        <h2>Pregunta 3</h2>
+
+        <p>¿Qué puede ayudar a mejorar la memoria?</p>
+
+        <label>
+            <input type="radio" name="p3" value="incorrecto">
+            Estudiar sin descansar.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p3" value="correcto">
+            Repasar la información y utilizar técnicas de memorización.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p3" value="incorrecto">
+            Evitar repasar.
+        </label>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+        <h2>Pregunta 4</h2>
+
+        <p>¿Qué ayuda a recordar mejor lo aprendido?</p>
+
+        <label>
+            <input type="radio" name="p4" value="correcto">
+            Repasar y practicar regularmente.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p4" value="incorrecto">
+            Estudiar solamente una vez.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p4" value="incorrecto">
+            No prestar atención durante el estudio.
+        </label>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+        <h2>Pregunta 5</h2>
+
+        <p>¿Cuál es una buena estrategia para estudiar?</p>
+
+        <label>
+            <input type="radio" name="p5" value="incorrecto">
+            Estudiar solamente cuando hay un examen.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p5" value="correcto">
+            Tener un horario, estudiar con atención y repasar.
+        </label><br>
+
+        <label>
+            <input type="radio" name="p5" value="incorrecto">
+            No organizar las actividades.
+        </label>
+
+    </div>
+
+
+    <button
+        type="button"
+        id="btnEnviarExamen"
+        class="boton">
+
+        ✅ Calificar examen
+
+    </button>
+
+</form>
+
+<br>
+
+<div id="resultado"></div>
+
+</main>
+
+
+<script>
+
+document.getElementById("btnEnviarExamen").onclick = function () {
+
+    let puntos = 0;
+
+    for (let i = 1; i <= 5; i++) {
+
+        const respuesta =
+            document.querySelector('input[name="p' + i + '"]:checked');
+
+        if (respuesta && respuesta.value === "correcto") {
+            puntos++;
+        }
+    }
+
+    const totalPreguntas = 5;
+
+    const porcentaje = Math.round(
+        (puntos / totalPreguntas) * 100
+    );
+
+    const resultado = document.getElementById("resultado");
+
+    resultado.innerHTML =
+        "Resultado: " + puntos +
+        " de " + totalPreguntas +
+        " puntos<br>" +
+        "Calificación: " + porcentaje + "%";
+
+
+    if (porcentaje >= 70) {
+
+        resultado.innerHTML +=
+            "<br>✅ Examen aprobado";
+
+
+        // Usuario activo
+        const usuarioActivo = JSON.parse(
+            localStorage.getItem("usuarioActivo")
+        );
+
+        if (!usuarioActivo) {
+
+            alert("No hay usuario iniciado");
+            return;
+
+        }
+
+
+        // Actualizar usuarios
+        let usuarios = JSON.parse(
+            localStorage.getItem("usuarios")
+        ) || [];
+
+
+        const indiceUsuario = usuarios.findIndex(
+            u => u.correo === usuarioActivo.correo
+        );
+
+
+        if (indiceUsuario !== -1) {
+
+            usuarios[indiceUsuario].progreso.tecnicas.examen = true;
+
+            localStorage.setItem(
+                "usuarios",
+                JSON.stringify(usuarios)
+            );
+
+        }
+
+
+        // Número fijo del certificado
+        const numeroCertificado =
+            "SC-2026-EST-914726";
+
+
+        // Actualizar estudiantes
+        let estudiantes = JSON.parse(
+            localStorage.getItem("estudiantes")
+        ) || [];
+
+
+        const indiceEstudiante = estudiantes.findIndex(
+            e =>
+                e.nombre.toLowerCase() ===
+                usuarioActivo.nombre.toLowerCase()
+                &&
+                (
+                    e.curso.toLowerCase() === "tecnicas"
+                    ||
+                    e.curso.toLowerCase() === "técnicas de estudio"
+                )
+        );
+
+
+        if (indiceEstudiante !== -1) {
+
+            estudiantes[indiceEstudiante].curso =
+                "Técnicas de estudio";
+
+            estudiantes[indiceEstudiante].progreso =
+                "100%";
+
+            estudiantes[indiceEstudiante].examen =
+                "Aprobado";
+
+            estudiantes[indiceEstudiante].certificado =
+                numeroCertificado;
+
+
+            localStorage.setItem(
+                "estudiantes",
+                JSON.stringify(estudiantes)
+            );
+
+        }
+
+
+        // Crear registro del certificado
+        const certificado = {
+
+            numero: numeroCertificado,
+
+            nombre: usuarioActivo.nombre,
+
+            curso: "Técnicas de estudio",
+
+            fecha: new Date()
+                .toLocaleDateString("es-MX"),
+
+            estado: "Aprobado"
+
+        };
+
+
+        localStorage.setItem(
+            "certificado_" + numeroCertificado,
+            JSON.stringify(certificado)
+        );
+
+
+        resultado.innerHTML +=
+            "<br>🎓 Certificado generado: " +
+            numeroCertificado;
+
+
+    } else {
+
+        resultado.innerHTML +=
+            "<br>❌ Examen no aprobado";
+
+    }
+
+};
+
+</script>
+</body>
+
+</html>

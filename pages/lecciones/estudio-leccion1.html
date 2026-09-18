@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Lección 1 - Organización del tiempo</title>
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1>📅 Técnicas de estudio</h1>
+<p>Lección 1: Organización del tiempo para estudiar</p>
+
+<nav>
+<a href="../estudio.html">Volver a Estudio</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<h2>🎯 Objetivo de la lección</h2>
+
+<p>
+Aprender a organizar el tiempo de estudio para aprovechar mejor
+las horas disponibles y mejorar los resultados académicos.
+</p>
+
+
+<h2>⏰ ¿Por qué es importante organizar el tiempo?</h2>
+
+<p>
+Muchas veces los estudiantes tienen dificultades porque dejan
+las tareas y el estudio para el último momento. Organizar el tiempo
+permite estudiar con calma y evitar el estrés.
+</p>
+
+
+<h2>📋 Crea un horario de estudio</h2>
+
+<p>
+Un buen horario debe incluir:
+</p>
+
+<ul>
+
+<li>📚 Tiempo para estudiar.</li>
+
+<li>✏️ Tiempo para hacer tareas.</li>
+
+<li>休 Tiempo de descanso.</li>
+
+<li>🎯 Metas claras de aprendizaje.</li>
+
+</ul>
+
+
+<h2>🧠 Evita las distracciones</h2>
+
+<p>
+Durante el estudio intenta:
+</p>
+
+<ul>
+
+<li>Apagar notificaciones del celular.</li>
+
+<li>Buscar un lugar tranquilo.</li>
+
+<li>Concentrarte en una sola actividad.</li>
+
+</ul>
+
+
+<h2>✏️ Actividad práctica</h2>
+
+<p>
+Escribe tu propio horario de estudio para esta semana.
+Incluye qué materia estudiarás y cuánto tiempo dedicarás.
+</p>
+
+
+<h2>📝 Pregunta de evaluación</h2>
+
+<p>
+¿Cuál es una ventaja de organizar tu tiempo de estudio?
+</p>
+
+
+<button onclick="respuestaCorrecta()">
+Ver respuesta
+</button>
+
+<p id="resultado"></p>
+
+<button
+id="btnCompletar"
+class="boton"
+data-curso="tecnicas"
+data-leccion="1"
+onclick="completarLeccion()">
+✅ Marcar lección como completada
+</button>
+
+
+<script>
+
+function respuestaCorrecta(){
+
+document.getElementById("resultado").innerHTML =
+"✅ Correcto: Organizar el tiempo ayuda a estudiar con menos estrés y mejorar el aprendizaje.";
+
+}
+
+
+function completarLeccion(){
+
+const usuarioActivo =
+JSON.parse(localStorage.getItem("usuarioActivo"));
+
+if (!usuarioActivo) {
+
+    alert("⚠️ No hay usuario activo.");
+    return;
+
+}
+
+if (!usuarioActivo.progreso) {
+    usuarioActivo.progreso = {};
+}
+
+if (!usuarioActivo.progreso.tecnicas) {
+    usuarioActivo.progreso.tecnicas = {};
+}
+
+usuarioActivo.progreso.tecnicas.leccion1 = true;
+
+localStorage.setItem(
+    "usuarioActivo",
+    JSON.stringify(usuarioActivo)
+);
+
+alert("🎉 Lección 1 completada correctamente");
+
+document.getElementById("btnCompletar").textContent =
+"✅ Lección completada";
+
+document.getElementById("btnCompletar").disabled = true;
+
+}
+</script>
+
+<script src="../js/app.js"></script>
+
+</main>
+
+</body>
+
+</html>
