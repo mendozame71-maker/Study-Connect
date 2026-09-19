@@ -35,13 +35,14 @@ localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
 alert("¡Bienvenido a Study-Connect!");
 
 if (usuario.rol === "admin") {
-    window.location.href = "/pages/lecciones/admin.html";
+    window.location.href = "lecciones/admin.html";
 } else {
-    window.location.href = "/pages/dashboard.html";
+   window.location.href = "dashboard.html";
+}
 }
 
  };
-}
+
     
 
 
@@ -616,7 +617,7 @@ if (nombreAlumno) {
 
             const enlace =
                 window.location.origin +
-                "/pages/usuarios/verificar.html?certificado=" +
+                "/Study-Connect/pages/usuarios/verificar.html?certificado=" +
                 numero;
 
             codigoQR.src =

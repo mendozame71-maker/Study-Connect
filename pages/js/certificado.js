@@ -50,7 +50,7 @@ if (botonPDF) {
 
         const enlace =
             window.location.origin +
-            "/pages/usuarios/verificar.html?certificado=" +
+            "/Study-Connect/pages/usuarios/verificar.html?certificado=" +
             alumno.certificado;
 
         document.getElementById("codigoQR").src =
