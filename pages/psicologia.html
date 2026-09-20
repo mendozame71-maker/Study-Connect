@@ -171,8 +171,14 @@ if(usuario){
 
 window.onload = function(){
 
+const usuarioActivo =
+JSON.parse(localStorage.getItem("usuarioActivo"));
+
+const progreso =
+usuarioActivo?.progreso?.psicologia || {};
+
 const completadas =
-Number(localStorage.getItem("psicologiaCompletadas")) || 0;
+Object.values(progreso).filter(v => v === true).length;
 
 if(completadas >= 8){
 
@@ -181,8 +187,6 @@ document.getElementById("accesoExamen").innerHTML = `
 📝 Presentar examen
 </a>
 `;
-
-
 
 }
 
