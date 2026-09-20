@@ -127,13 +127,24 @@ if (botonExamen) {
 
 
 
-           const indiceEstudiante = estudiantes.findIndex(
+          let indiceEstudiante = estudiantes.findIndex(
     e =>
         e.nombre.toLowerCase() === usuarioActivo.nombre.toLowerCase()
         &&
+        e.curso &&
         e.curso.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") ===
         nombreCurso.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 );
+
+if (indiceEstudiante === -1) {
+
+    indiceEstudiante = estudiantes.findIndex(
+        e =>
+            e.nombre.toLowerCase() ===
+            usuarioActivo.nombre.toLowerCase()
+    );
+
+}
 
 
 
