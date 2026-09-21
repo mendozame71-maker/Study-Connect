@@ -103,6 +103,25 @@ Comenzar lección
 </a>
 
 </div>
+</div>
+
+<div class="tarjeta examen-final">
+
+<h3>📝 Examen final</h3>
+
+<p>
+Cuando completes las 5 lecciones, presenta el examen para obtener tu certificado de Educación.
+</p>
+
+<div id="accesoExamen">
+
+<p>
+🔒 Debes completar las 5 lecciones para desbloquear el examen.
+</p>
+
+</div>
+
+</div>
 
 </main>
 
@@ -132,6 +151,16 @@ if (usuario && usuario.progreso && usuario.progreso.educacion) {
 
     barra.value = porcentaje;
     texto.textContent = porcentaje + "%";
+
+}
+
+if (completadas >= 5) {
+
+    document.getElementById("accesoExamen").innerHTML = `
+        <a href="lecciones/educacion-examen.html" class="boton">
+        📝 Presentar examen
+        </a>
+    `;
 
 }
 
