@@ -101,5 +101,44 @@ Comenzar lección
 
 </main>
 
+<script>
+
+window.onload = function() {
+
+    const usuarioActivo = JSON.parse(
+        localStorage.getItem("usuarioActivo")
+    );
+
+    if (!usuarioActivo) {
+        return;
+    }
+
+    const progreso =
+        usuarioActivo.progreso?.tecnicas || {};
+
+    let completadas = 0;
+
+    for (let i = 1; i <= 4; i++) {
+
+        if (progreso["leccion" + i] === true) {
+            completadas++;
+        }
+
+    }
+
+    if (completadas >= 4) {
+
+        document.getElementById("accesoExamen").innerHTML = `
+            <a href="lecciones/tecnicas-examen.html" class="boton">
+            📝 Presentar examen
+            </a>
+        `;
+
+    }
+
+};
+
+</script>
+
 </body>
 </html>
