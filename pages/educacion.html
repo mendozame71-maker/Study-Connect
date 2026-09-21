@@ -149,12 +149,10 @@ if (usuario && usuario.progreso && usuario.progreso.educacion) {
         (completadas / totalLecciones) * 100
     );
 
-    barra.value = porcentaje;
+   barra.value = porcentaje;
     texto.textContent = porcentaje + "%";
 
-}
-
- if (completadas >= 5) {
+    if (completadas >= 5) {
 
         document.getElementById("accesoExamen").innerHTML = `
             <a href="lecciones/educacion-examen.html" class="boton">
@@ -163,6 +161,8 @@ if (usuario && usuario.progreso && usuario.progreso.educacion) {
         `;
 
     }
+
+}
 
 
 
