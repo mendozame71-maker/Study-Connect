@@ -92,6 +92,10 @@ if (botonExamen) {
         // EXAMEN APROBADO
         // ===============================
 
+
+        // Conservar el progreso actual del usuario
+usuarios[indice].progreso = usuarioActivo.progreso;
+
         if (porcentaje >= 70) {
 
 
