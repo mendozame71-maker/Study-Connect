@@ -344,30 +344,49 @@ if (cursoURL) {
 
 }
 
+else if (numeroCertificado) {
 
-// Si viene desde Administración,
-// buscar a qué curso pertenece el número
-else if (
-    numeroCertificado &&
-    usuarioActivo &&
-    usuarioActivo.certificados
-) {
+    const certificadoGuardado =
+        JSON.parse(
+            localStorage.getItem(
+                "certificado_" + numeroCertificado
+            )
+        );
 
-    for (
-        const nombreCurso in usuarioActivo.certificados
+    if (
+        certificadoGuardado &&
+        certificadoGuardado.curso
     ) {
 
-        if (
-            usuarioActivo.certificados[nombreCurso] ===
-            numeroCertificado
+        document.getElementById(
+            "nombreCurso"
+        ).textContent =
+            certificadoGuardado.curso;
+
+    }
+
+    else if (
+        usuarioActivo &&
+        usuarioActivo.certificados
+    ) {
+
+        for (
+            const nombreCurso in usuarioActivo.certificados
         ) {
 
-            document.getElementById(
-                "nombreCurso"
-            ).textContent =
-                nombreCurso;
+            if (
+                usuarioActivo.certificados[nombreCurso] ===
+                numeroCertificado
+            ) {
 
-            break;
+                document.getElementById(
+                    "nombreCurso"
+                ).textContent =
+                    nombreCurso;
+
+                break;
+
+            }
 
         }
 
