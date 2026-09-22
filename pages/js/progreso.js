@@ -161,56 +161,57 @@ if (barraPsicologia) {
     }
 
 
-    // ========================================
-    // ESTADOS
-    // ========================================
+   // ========================================
+// ESTADOS
+// ========================================
 
-    function mostrarEstado(porcentaje, elemento) {
+function mostrarEstado(porcentaje, elemento) {
 
-        if (!elemento) return;
+    if (!elemento) return;
 
-        if (porcentaje === 100) {
+    if (porcentaje === 100) {
 
-            elemento.textContent =
-                "✅ Curso completado";
+        elemento.textContent =
+            "✅ Curso completado";
 
-        } else if (porcentaje > 0) {
+    } else if (porcentaje > 0) {
 
-            elemento.textContent =
-                "🟡 En progreso";
+        elemento.textContent =
+            "🟡 En progreso";
 
-        } else {
+    } else {
 
-            elemento.textContent =
-                "⚪ Sin iniciar";
-        }
+        elemento.textContent =
+            "⚪ Sin iniciar";
     }
+}
 
 
-    mostrarEstado(
-        educacion,
-        document.getElementById("estadoEducacion")
-    );
+mostrarEstado(
+    educacion,
+    document.getElementById("estadoEducacion")
+);
 
-    mostrarEstado(
-        tecnicas,
-        document.getElementById("estadoTecnicas")
-    );
+mostrarEstado(
+    tecnicas,
+    document.getElementById("estadoTecnicas")
+);
 
-    mostrarEstado(
-        psicologia,
-        document.getElementById("estadoPsicologia")
-    );
+mostrarEstado(
+    psicologia,
+    document.getElementById("estadoPsicologia")
+);
 
 
- // ========================================
+// ========================================
 // CERTIFICADOS
 // ========================================
 
 function mostrarCertificado(
     porcentaje,
     elemento,
-    curso
+    curso,
+    numeroCertificado
 ) {
 
     if (!elemento) return;
@@ -221,9 +222,9 @@ function mostrarCertificado(
 
             "🏆 ¡Felicidades!<br><br>" +
 
-            "<a href='certificado.html?curso=" +
+            "<a href='certificado.html?certificado=" +
 
-            encodeURIComponent(curso) +
+            encodeURIComponent(numeroCertificado) +
 
             "'>" +
 
@@ -234,31 +235,48 @@ function mostrarCertificado(
     } else {
 
         elemento.innerHTML = "";
+
     }
 }
 
 
 mostrarCertificado(
+
     educacion,
+
     document.getElementById("certificadoEducacion"),
-    "Educación"
+
+    "Educación",
+
+    "SC-2026-EDU-583214"
+
 );
 
 
 mostrarCertificado(
+
     tecnicas,
+
     document.getElementById("certificadoTecnicas"),
-    "Técnicas de estudio"
+
+    "Técnicas de estudio",
+
+    "SC-2026-EST-914726"
+
 );
 
 
 mostrarCertificado(
+
     psicologia,
+
     document.getElementById("certificadoPsicologia"),
-    "Psicología"
+
+    "Psicología",
+
+    "SC-2026-PSI-293658"
 
 );
-    
 
 // ========================================
 // INSIGNIAS
