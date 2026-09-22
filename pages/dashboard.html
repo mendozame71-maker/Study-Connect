@@ -517,23 +517,33 @@ let certificados = 0;
 // CONTAR CERTIFICADOS
 // ===============================
 
-if (usuario.certificados) {
+if (usuario.progreso) {
 
-    for (let curso in usuario.certificados) {
+    if (
+        usuario.progreso.psicologia &&
+        usuario.progreso.psicologia.examen === true
+    ) {
+        certificados++;
+    }
 
-        if (usuario.certificados[curso]) {
+    if (
+        usuario.progreso.educacion &&
+        usuario.progreso.educacion.examen === true
+    ) {
+        certificados++;
+    }
 
-            certificados++;
-
-        }
-
+    if (
+        usuario.progreso.tecnicas &&
+        usuario.progreso.tecnicas.examen === true
+    ) {
+        certificados++;
     }
 
 }
 
 document.getElementById("resumenCertificados").textContent =
     certificados;
-
 
 </script>
 
