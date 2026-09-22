@@ -2,8 +2,12 @@ console.log("DASHBOARD.JS CARGADO");
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    // ==============================
     // Psicología
-    let estadoPsicologiaJS = localStorage.getItem("estadoPsicologia");
+    // ==============================
+
+    let estadoPsicologiaJS =
+        localStorage.getItem("estadoPsicologia");
 
     let elementoPsicologia =
         document.getElementById("estadoPsicologia");
@@ -13,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (elementoPsicologia && botonPsicologia) {
 
-        if (estadoPsicologia === "inactivo") {
+        if (estadoPsicologiaJS === "inactivo") {
 
             elementoPsicologia.innerHTML =
                 "🔴 Curso temporalmente inactivo";
@@ -31,22 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
             elementoPsicologia.innerHTML =
                 "🟢 Curso disponible";
 
-            botonPsicologia.innerHTML =
-                "Entrar al curso";
-
-            botonPsicologia.setAttribute(
-                "href",
-                "psicologia.html"
-            );
-
             botonPsicologia.style.pointerEvents = "auto";
             botonPsicologia.style.opacity = "1";
         }
     }
 
 
+    // ==============================
     // Educación
-   let estadoEducacionJS =
+    // ==============================
+
+    let estadoEducacionJS =
         localStorage.getItem("estadoEducacion");
 
     let elementoEducacion =
@@ -57,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (elementoEducacion && botonEducacion) {
 
-        if (estadoEducacion === "inactivo") {
+        if (estadoEducacionJS === "inactivo") {
 
             elementoEducacion.innerHTML =
                 "🔴 Curso temporalmente inactivo";
@@ -75,21 +74,16 @@ document.addEventListener("DOMContentLoaded", function () {
             elementoEducacion.innerHTML =
                 "🟢 Curso disponible";
 
-            botonEducacion.innerHTML =
-                "Entrar al curso";
-
-            botonEducacion.setAttribute(
-                "href",
-                "educacion.html"
-            );
-
             botonEducacion.style.pointerEvents = "auto";
             botonEducacion.style.opacity = "1";
         }
     }
 
 
+    // ==============================
     // Técnicas de estudio
+    // ==============================
+
     let estadoTecnicasJS =
         localStorage.getItem("estadoTecnicas");
 
@@ -101,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (elementoTecnicas && botonTecnicas) {
 
-        if (estadoTecnicas === "inactivo") {
+        if (estadoTecnicasJS === "inactivo") {
 
             elementoTecnicas.innerHTML =
                 "🔴 Curso temporalmente inactivo";
@@ -118,14 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             elementoTecnicas.innerHTML =
                 "🟢 Curso disponible";
-
-            botonTecnicas.innerHTML =
-                "Entrar al curso";
-
-            botonTecnicas.setAttribute(
-                "href",
-                "estudio.html"
-            );
 
             botonTecnicas.style.pointerEvents = "auto";
             botonTecnicas.style.opacity = "1";
