@@ -289,35 +289,20 @@ if (localStorage.getItem("estadoPsicologia") === "inactivo") {
 
     boton.textContent = "🏆 Ver certificado";
 
-    const estudiantes =
-        JSON.parse(localStorage.getItem("estudiantes")) || [];
+     if (
+    usuario.progreso.psicologia &&
+    usuario.progreso.psicologia.examen === true
+) {
 
-    const estudiante =
-        estudiantes.find(function(e) {
+    boton.href =
+        "certificado.html?certificado=SC-2026-PSI-293658";
 
-            return e.nombre.toLowerCase() ===
-                usuario.nombre.toLowerCase()
-                &&
-                e.curso.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") ===
-                "psicologia";
+} else {
 
-        });
+    boton.textContent = "📝 Presentar examen";
+    boton.href = "psicologia.html";
 
-    if (
-        estudiante &&
-        estudiante.certificado &&
-        estudiante.certificado !== "Sin certificado"
-    ) {
-
-        boton.href =
-            "certificado.html?certificado=" +
-            encodeURIComponent(estudiante.certificado);
-
-    } else {
-
-        boton.href = "certificado.html";
-
-    }
+} 
 
     boton.style.pointerEvents = "auto";
     boton.style.opacity = "1";
@@ -392,34 +377,19 @@ if (localStorage.getItem("estadoEducacion") === "inactivo") {
     estadoEducacion.style.color = "#16a34a";
 
     botonEducacion.textContent = "🏆 Ver certificado";
-    const estudiantes =
-    JSON.parse(localStorage.getItem("estudiantes")) || [];
-
-const estudiante =
-    estudiantes.find(function(e) {
-
-        return e.nombre.toLowerCase() ===
-            usuario.nombre.toLowerCase()
-            &&
-            e.curso.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") ===
-    "educacion";
-
-    });
-
-if (
-    estudiante &&
-    estudiante.certificado &&
-    estudiante.certificado !== "Sin certificado"
+    
+    if (
+    usuario.progreso.educacion &&
+    usuario.progreso.educacion.examen === true
 ) {
 
     botonEducacion.href =
-        "certificado.html?certificado=" +
-        encodeURIComponent(estudiante.certificado);
+        "certificado.html?certificado=SC-2026-EDU-583214";
 
 } else {
 
-    botonEducacion.href =
-        "certificado.html";
+    botonEducacion.textContent = "📝 Presentar examen";
+    botonEducacion.href = "educacion.html";
 
 }
     botonEducacion.style.pointerEvents = "auto";
@@ -501,36 +471,20 @@ if (localStorage.getItem("estadoEstudio") === "inactivo") {
 
     botonTecnicas.textContent = "🏆 Ver certificado";
 
-    const estudiantes =
-        JSON.parse(localStorage.getItem("estudiantes")) || [];
-
-    const estudiante =
-        estudiantes.find(function(e) {
-
-            return e.nombre.toLowerCase() ===
-                usuario.nombre.toLowerCase()
-                &&
-                e.curso.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") ===
-"tecnicas de estudio";
-
-        });
-
     if (
-        estudiante &&
-        estudiante.certificado &&
-        estudiante.certificado !== "Sin certificado"
-    ) {
+    usuario.progreso.tecnicas &&
+    usuario.progreso.tecnicas.examen === true
+) {
 
-        botonTecnicas.href =
-            "certificado.html?certificado=" +
-            encodeURIComponent(estudiante.certificado);
+    botonTecnicas.href =
+        "certificado.html?certificado=SC-2026-EST-914726";
 
-    } else {
+} else {
 
-        botonTecnicas.href =
-            "certificado.html";
+    botonTecnicas.textContent = "📝 Presentar examen";
+    botonTecnicas.href = "estudio.html";
 
-    }
+}
 
     botonTecnicas.style.pointerEvents = "auto";
     botonTecnicas.style.opacity = "1";
