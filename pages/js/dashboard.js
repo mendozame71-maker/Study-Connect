@@ -1,129 +1,135 @@
 console.log("DASHBOARD.JS CARGADO");
-document.addEventListener("DOMContentLoaded", function(){
 
-    let estado = localStorage.getItem("estadoPsicologia");
+document.addEventListener("DOMContentLoaded", function () {
 
-    let estadoCurso = document.getElementById("estadoPsicologia");
-    let botonCurso = document.getElementById("botonPsicologia");
+    // Psicología
+    let estadoPsicologiaJS = localStorage.getItem("estadoPsicologia");
 
-    if(!estadoCurso || !botonCurso){
-        return;
+    let elementoPsicologia =
+        document.getElementById("estadoPsicologia");
+
+    let botonPsicologia =
+        document.getElementById("botonPsicologia");
+
+    if (elementoPsicologia && botonPsicologia) {
+
+        if (estadoPsicologia === "inactivo") {
+
+            elementoPsicologia.innerHTML =
+                "🔴 Curso temporalmente inactivo";
+
+            botonPsicologia.innerHTML =
+                "🚫 Curso no disponible";
+
+            botonPsicologia.removeAttribute("href");
+
+            botonPsicologia.style.pointerEvents = "none";
+            botonPsicologia.style.opacity = "0.6";
+
+        } else {
+
+            elementoPsicologia.innerHTML =
+                "🟢 Curso disponible";
+
+            botonPsicologia.innerHTML =
+                "Entrar al curso";
+
+            botonPsicologia.setAttribute(
+                "href",
+                "psicologia.html"
+            );
+
+            botonPsicologia.style.pointerEvents = "auto";
+            botonPsicologia.style.opacity = "1";
+        }
     }
 
-    if(estado === "inactivo"){
 
-        estadoCurso.innerHTML = "🔴 Curso temporalmente inactivo";
+    // Educación
+   let estadoEducacionJS =
+        localStorage.getItem("estadoEducacion");
 
-        botonCurso.innerHTML = "🚫 Curso no disponible";
+    let elementoEducacion =
+        document.getElementById("estadoEducacion");
 
-        botonCurso.removeAttribute("href");
+    let botonEducacion =
+        document.getElementById("botonEducacion");
 
-        botonCurso.style.pointerEvents = "none";
-        botonCurso.style.opacity = "0.6";
+    if (elementoEducacion && botonEducacion) {
 
-    }else{
+        if (estadoEducacion === "inactivo") {
 
-        estadoCurso.innerHTML = "🟢 Curso disponible";
+            elementoEducacion.innerHTML =
+                "🔴 Curso temporalmente inactivo";
 
-        botonCurso.innerHTML = "Entrar al curso";
+            botonEducacion.innerHTML =
+                "🚫 Curso no disponible";
 
-        botonCurso.setAttribute("href", "psicologia.html");
+            botonEducacion.removeAttribute("href");
 
-        botonCurso.style.pointerEvents = "auto";
-        botonCurso.style.opacity = "1";
+            botonEducacion.style.pointerEvents = "none";
+            botonEducacion.style.opacity = "0.6";
 
+        } else {
+
+            elementoEducacion.innerHTML =
+                "🟢 Curso disponible";
+
+            botonEducacion.innerHTML =
+                "Entrar al curso";
+
+            botonEducacion.setAttribute(
+                "href",
+                "educacion.html"
+            );
+
+            botonEducacion.style.pointerEvents = "auto";
+            botonEducacion.style.opacity = "1";
+        }
+    }
+
+
+    // Técnicas de estudio
+    let estadoTecnicasJS =
+        localStorage.getItem("estadoTecnicas");
+
+    let elementoTecnicas =
+        document.getElementById("estadoTecnicas");
+
+    let botonTecnicas =
+        document.getElementById("botonTecnicas");
+
+    if (elementoTecnicas && botonTecnicas) {
+
+        if (estadoTecnicas === "inactivo") {
+
+            elementoTecnicas.innerHTML =
+                "🔴 Curso temporalmente inactivo";
+
+            botonTecnicas.innerHTML =
+                "🚫 Curso no disponible";
+
+            botonTecnicas.removeAttribute("href");
+
+            botonTecnicas.style.pointerEvents = "none";
+            botonTecnicas.style.opacity = "0.6";
+
+        } else {
+
+            elementoTecnicas.innerHTML =
+                "🟢 Curso disponible";
+
+            botonTecnicas.innerHTML =
+                "Entrar al curso";
+
+            botonTecnicas.setAttribute(
+                "href",
+                "estudio.html"
+            );
+
+            botonTecnicas.style.pointerEvents = "auto";
+            botonTecnicas.style.opacity = "1";
+        }
     }
 
 });
-
-let estadoEducacion = localStorage.getItem("estadoEducacion");
-
-let elementoEducacion = document.getElementById("estadoEducacion");
-let botonEducacion = document.getElementById("botonEducacion");
-
-if(elementoEducacion && botonEducacion){
-
-    if(estadoEducacion === "inactivo"){
-
-        elementoEducacion.innerHTML = "🔴 Curso temporalmente inactivo";
-
-        botonEducacion.innerHTML = "🚫 Curso no disponible";
-
-        botonEducacion.removeAttribute("href");
-
-        botonEducacion.style.pointerEvents = "none";
-        botonEducacion.style.opacity = "0.6";
-
-    }else{
-
-        elementoEducacion.innerHTML = "🟢 Curso disponible";
-
-        botonEducacion.innerHTML = "Entrar al curso";
-
-        botonEducacion.setAttribute("href", "educacion.html");
-
-        botonEducacion.style.pointerEvents = "auto";
-        botonEducacion.style.opacity = "1";
-
-    }
-
-}
-
-let estadoPsicologia = localStorage.getItem("estadoPsicologia");
-
-let elementoPsicologia = document.getElementById("estadoPsicologia");
-let botonPsicologia = document.getElementById("botonPsicologia");
-
-if(elementoPsicologia && botonPsicologia){
-
-    if(estadoPsicologia === "inactivo"){
-
-        elementoPsicologia.innerHTML = "🔴 Curso temporalmente inactivo";
-
-        botonPsicologia.innerHTML = "🚫 Curso no disponible";
-
-        botonPsicologia.removeAttribute("href");
-
-        botonPsicologia.style.pointerEvents = "none";
-        botonPsicologia.style.opacity = "0.6";
-
-    }else{
-
-        elementoPsicologia.innerHTML = "🟢 Curso disponible";
-
-        botonPsicologia.innerHTML = "Entrar al curso";
-
-        botonPsicologia.setAttribute("href", "psicologia.html");
-
-        botonPsicologia.style.pointerEvents = "auto";
-        botonPsicologia.style.opacity = "1";
-
-    }
-
-}
-
-setTimeout(function(){
-
-    let estado = localStorage.getItem("estadoEducacion");
-
-    let elemento = document.getElementById("estadoEducacion");
-    let boton = document.getElementById("botonEducacion");
-
-    if(!elemento || !boton){
-        return;
-    }
-
-    if(estado === "inactivo"){
-
-        elemento.innerHTML = "🔴 Curso temporalmente inactivo";
-
-        boton.innerHTML = "🚫 Curso no disponible";
-
-        boton.removeAttribute("href");
-
-        boton.style.pointerEvents = "none";
-        boton.style.opacity = "0.6";
-
-    }
-
-}, 100);
