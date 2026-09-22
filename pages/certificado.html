@@ -221,46 +221,6 @@ const certificadoURL =
 const cursoURL =
     parametros.get("curso");
 
-    if (!usuarioActivo && certificadoURL) {
-
-    const certificadoGuardado =
-        JSON.parse(
-            localStorage.getItem(
-                "certificado_" + certificadoURL
-            )
-        );
-
-    if (certificadoGuardado) {
-
-        document.getElementById(
-            "nombreAlumno"
-        ).textContent =
-            certificadoGuardado.nombre || "Alumno";
-
-        document.getElementById(
-            "nombreCurso"
-        ).textContent =
-            certificadoGuardado.curso || "Curso no encontrado";
-
-        document.querySelector(
-            ".numero strong"
-        ).textContent =
-            certificadoGuardado.numero || certificadoURL;
-
-        const firma =
-            document.querySelector(
-                ".firma:last-child p"
-            );
-
-        if (firma) {
-            firma.textContent =
-                certificadoGuardado.nombre || "Alumno";
-        }
-
-    }
-
-}
-
 
 if (usuarioActivo) {
 
@@ -280,7 +240,7 @@ if (certificadoURL) {
                 alumno.certificado === certificadoURL
         );
 
- if (estudiante) {
+   if (estudiante) {
 
     nombre = estudiante.nombre;
 
@@ -288,53 +248,7 @@ if (certificadoURL) {
         "nombreCurso"
     ).textContent =
         estudiante.curso || "Curso no encontrado";
-
-} else {
-
-    const certificadoGuardado =
-        JSON.parse(
-            localStorage.getItem(
-                "certificado_" + certificadoURL
-            )
-        );
-
-    if (certificadoGuardado) {
-
-        nombre =
-            certificadoGuardado.nombre ||
-            nombre;
-
-        document.getElementById(
-            "nombreCurso"
-        ).textContent =
-            certificadoGuardado.curso ||
-            "Curso no encontrado";
-
-    }
 }
-
-
-    const certificadoGuardado =
-        JSON.parse(
-            localStorage.getItem(
-                "certificado_" + certificadoURL
-            )
-        );
-
-    if (certificadoGuardado) {
-
-        nombre =
-            certificadoGuardado.nombre ||
-            nombre;
-
-        document.getElementById(
-            "nombreCurso"
-        ).textContent =
-            certificadoGuardado.curso ||
-            "Curso no encontrado";
-
-    }
-
 }
 
     document.getElementById(
@@ -403,47 +317,6 @@ if (certificadoURL) {
 
 }
 
-// Recuperar datos del certificado directamente
-if (certificadoURL) {
-
-    const certificadoGuardado =
-        JSON.parse(
-            localStorage.getItem(
-                "certificado_" + certificadoURL
-            )
-        );
-
-    if (certificadoGuardado) {
-
-        document.getElementById(
-            "nombreCurso"
-        ).textContent =
-            certificadoGuardado.curso || "Curso no encontrado";
-
-        document.querySelector(
-            ".numero strong"
-        ).textContent =
-            certificadoGuardado.numero || certificadoURL;
-
-        document.getElementById(
-            "nombreAlumno"
-        ).textContent =
-            certificadoGuardado.nombre || "Alumno";
-
-        const firma =
-            document.querySelector(
-                ".firma:last-child p"
-            );
-
-        if (firma) {
-            firma.textContent =
-                certificadoGuardado.nombre || "Alumno";
-        }
-
-    }
-
-}
-
 // Generar código QR
 const codigoQR =
     document.getElementById("codigoQR");
@@ -457,26 +330,6 @@ if (codigoQR && numeroCertificado) {
     codigoQR.src =
         "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
         encodeURIComponent(enlaceQR);
-
-}
-
-if (certificadoURL) {
-
-    const datosCertificado =
-        JSON.parse(
-            localStorage.getItem(
-                "certificado_" + certificadoURL
-            )
-        );
-
-    if (datosCertificado && datosCertificado.curso) {
-
-        document.getElementById(
-            "nombreCurso"
-        ).textContent =
-            datosCertificado.curso;
-
-    }
 
 }
 
