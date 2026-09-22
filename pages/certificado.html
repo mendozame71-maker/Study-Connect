@@ -248,7 +248,28 @@ if (certificadoURL) {
         "nombreCurso"
     ).textContent =
         estudiante.curso || "Curso no encontrado";
-}
+
+} else {
+
+    const certificadoGuardado =
+        JSON.parse(
+            localStorage.getItem(
+                "certificado_" + certificadoURL
+            )
+        );
+
+    if (
+        certificadoGuardado &&
+        certificadoGuardado.curso
+    ) {
+
+        document.getElementById(
+            "nombreCurso"
+        ).textContent =
+            certificadoGuardado.curso;
+
+    }
+
 }
 
     document.getElementById(
