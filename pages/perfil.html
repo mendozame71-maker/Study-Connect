@@ -88,29 +88,42 @@ const estudiantes =
     JSON.parse(localStorage.getItem("estudiantes")) || [];
 
 const misCursos = estudiantes.filter(
-    estudiante => estudiante.nombre.toLowerCase() === usuario.nombre.toLowerCase()
+    estudiante =>
+        estudiante.nombre &&
+        estudiante.nombre.toLowerCase() === usuario.nombre.toLowerCase() &&
+        estudiante.curso &&
+        estudiante.curso !== "Sin curso"
 );
 
 if (misCursos.length > 0) {
 
-   misCursos.forEach(estudiante => {
+    misCursos.forEach(estudiante => {
 
-    const li = document.createElement("li");
+        const li = document.createElement("li");
 
-    li.innerHTML =
-        "📘 " +
-        estudiante.curso +
-        " — " +
-        estudiante.progreso +
-        " — " +
-        estudiante.examen +
-        ' <a href="certificado.html?certificado=' +
-        estudiante.certificado +
-        '" class="boton">🏆 Ver certificado</a>';
+        let contenido =
+            "📘 " +
+            estudiante.curso +
+            " — " +
+            estudiante.progreso +
+            " — " +
+            estudiante.examen;
 
-    listaCursos.appendChild(li);
+        if (
+            estudiante.certificado &&
+            estudiante.certificado !== "Sin certificado"
+        ) {
+            contenido +=
+                ' <a href="certificado.html?certificado=' +
+                estudiante.certificado +
+                '" class="boton">🏆 Ver certificado</a>';
+        }
 
-});
+        li.innerHTML = contenido;
+
+        listaCursos.appendChild(li);
+
+    });
 
 } else {
 
